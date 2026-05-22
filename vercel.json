@@ -1,0 +1,58 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/data/compare/index.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+      ]
+    },
+    {
+      "source": "/data/compare/call_daily.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+      ]
+    },
+    {
+      "source": "/data/compare/chatbot_daily.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+      ]
+    },
+    {
+      "source": "/data/compare/inst_table.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+      ]
+    },
+    {
+      "source": "/data/compare/(target1|target2|r2_target1|r2_target2).json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400, immutable" }
+      ]
+    },
+    {
+      "source": "/data/dashboard/(inline_data|cd|unbilled).json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+      ]
+    },
+    {
+      "source": "/data/dashboard/season_calendar.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/(index.html|compare.html)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ]
+}

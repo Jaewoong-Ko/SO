@@ -1,0 +1,11 @@
+# Claude / 로컬 작업 흔적
+.claude/
+CLAUDE.md
+outputs/
+
+# 별도 git repo (so-guide)
+vercel-deploy/
+
+# 임시 파일
+*.tmp
+*.bak
