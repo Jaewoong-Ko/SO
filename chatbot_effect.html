@@ -72,6 +72,14 @@
   .notes{background:#0f172a;border-left:3px solid var(--blue);padding:10px 14px;font-size:12px;color:#cbd5e1;border-radius:0 8px 8px 0;line-height:1.65}
   .notes b{color:#fbbf24}
 
+  /* 탭 UI */
+  .tabs{display:flex;gap:4px;border-bottom:2px solid #334155;margin:14px 0 22px;padding-left:2px}
+  .tabs button{background:transparent;border:none;color:#94a3b8;padding:10px 18px;font-size:13.5px;font-weight:700;cursor:pointer;border-radius:8px 8px 0 0;transition:all .15s;margin-bottom:-2px;border-bottom:2px solid transparent;font-family:inherit}
+  .tabs button:hover{color:#cbd5e1;background:rgba(59,130,246,.06)}
+  .tabs button.active{color:#fbbf24;border-bottom-color:#fbbf24;background:rgba(251,191,36,.06)}
+  .tab-content{display:none}
+  .tab-content.active{display:block}
+
   details summary::-webkit-details-marker{display:none}
   details[open] summary .tri{transform:rotate(90deg)}
   details summary:hover{background:#243044}
@@ -87,6 +95,15 @@
 
   <h1>서비스 인입감소 효과 분석 <span class="badge">D-1 = <span id="dvDate">2026-05-27</span></span></h1>
   <div class="sub">4월부터 챗봇이 콜을 얼마나 대체하고 있는지 — 하루 평균 서비스 받은 병원 수 기준</div>
+
+  <!-- 탭 UI -->
+  <div class="tabs">
+    <button class="active" data-tab="r2t1">🎯 콜 안내 대상 1,166처</button>
+    <button data-tab="main">📊 전체 효과 분석</button>
+  </div>
+
+  <!-- 탭 (기본 비활성): 전체 효과 분석 -->
+  <div class="tab-content" id="tab-main">
 
   <!-- 분석의 관점 -->
   <div class="panel" style="background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);border:1px solid #334155;border-left:3px solid #3b82f6;padding:14px 18px;margin-bottom:18px">
@@ -265,6 +282,92 @@
       </div>
     </div>
   </details>
+
+  </div><!-- /tab-main -->
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 탭 (기본 활성): 콜 안내 대상 1,166처 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="tab-content active" id="tab-r2t1">
+
+    <!-- 분석 관점 -->
+    <div class="panel" style="background:linear-gradient(135deg,#3d2f0c 0%,#1e293b 100%);border:1px solid #475569;border-left:3px solid #fbbf24;padding:14px 18px;margin-bottom:18px">
+      <div style="font-size:11.5px;color:#fde68a;margin-bottom:6px;font-weight:700;letter-spacing:.3px">🎯 이 분석의 관점</div>
+      <p style="font-size:13px;color:#e2e8f0;margin:0 0 10px;line-height:1.7">
+        <b style="color:#fde68a">대상 = 26년 콜량 상위 30% 中 챗봇 미사용 고객</b> · 콜 인입 시 바로바로 안내 진행중.
+      </p>
+      <div style="background:rgba(220,38,38,.12);border-left:3px solid #ef4444;padding:10px 14px;border-radius:0 6px 6px 0">
+        <div style="font-size:11.5px;color:#fca5a5;font-weight:800;margin-bottom:4px;letter-spacing:.3px">📌 결론</div>
+        <p style="font-size:13px;color:#fecaca;margin:0;line-height:1.65">
+          성급한 판단일 수 있으나, 안내를 시작한 <b style="color:#fff">5월</b>에<br>
+          <b style="color:#fff">대상 고객군과 전체 고객의 객당 콜수 Gap이 감소</b>되었다.
+        </p>
+      </div>
+    </div>
+
+    <!-- 1) 가로 막대 — 전체 콜량 중 1,166 비중 -->
+    <div class="panel">
+      <h3>전체 26년 서비스 중, 바로바로 집중 안내 대상 1,166처 콜 비중</h3>
+      <!-- 가로 막대 (콜량 12.8% 만큼 색칠) -->
+      <div style="position:relative;height:52px;background:#0f172a;border-radius:8px;overflow:hidden;border:1px solid #334155;margin-top:6px">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:12.8%;background:linear-gradient(90deg,#b91c1c,#fbbf24);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;white-space:nowrap;padding:0 10px;box-shadow:0 0 14px rgba(251,191,36,.4);text-align:center;line-height:1.3">
+          1,166처<br><small style="font-weight:600;opacity:.9">(7.8%)</small>
+        </div>
+        <div style="position:absolute;left:12.8%;top:0;bottom:0;right:0;display:flex;align-items:center;padding-left:14px;font-size:11.5px;color:#94a3b8">
+          나머지 13,859처 (92.2%)
+        </div>
+      </div>
+      <!-- 통합 박스 (2 카드) -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px">
+        <div style="background:#0f172a;padding:11px 14px;border-radius:8px;border:1px solid #1e293b">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:3px">📞 26년 콜</div>
+          <div style="font-size:22px;font-weight:800;color:#ef4444">
+            15,082<span style="font-size:11px;color:#94a3b8">건</span>
+            <span style="font-size:12px;color:#94a3b8;font-weight:500"> &nbsp;/&nbsp; <span style="color:#cbd5e1">117,840</span>건</span>
+          </div>
+          <div style="font-size:11px;color:#cbd5e1;margin-top:2px">전체 콜의 <b style="color:#fbbf24">12.8%</b></div>
+        </div>
+        <div style="background:#0f172a;padding:11px 14px;border-radius:8px;border:1px solid #1e293b">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:3px">🤖 26년 5월 챗봇 사용 전환</div>
+          <div style="font-size:22px;font-weight:800;color:#10b981">
+            432처(37%)
+            <span style="font-size:12px;color:#94a3b8;font-weight:500"> &nbsp;/&nbsp; <span style="color:#cbd5e1">1,166</span>처</span>
+          </div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:2px">총 질의 645회</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2) 5월 일자별 — 객당 평균 -->
+    <div class="panel">
+      <h3>5월 일자별 — 객당 콜·챗봇 발생 평균 (영업일만)</h3>
+      <div class="legend">
+        <span><span class="sw" style="background:#94a3b8;border-radius:50%"></span>◎ 전체 고객 객당 콜</span>
+        <span><span class="sw" style="background:#ef4444;border-radius:50%"></span>📞 1,166 객당 콜</span>
+        <span><span class="sw" style="background:#10b981;border-radius:50%"></span>🤖 1,166 객당 챗봇</span>
+        <span style="margin-left:auto;color:#94a3b8;font-style:italic">객당 = 합계 / 인원</span>
+      </div>
+      <div class="chart-wrap" style="height:340px">
+        <canvas id="r2MayChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 3) 월별 — 객당 평균 (25년 baseline + 26년) -->
+    <div class="panel">
+      <h3>월별 — 객당 콜·챗봇 발생 평균 (25년 baseline + 26년 1~5월)</h3>
+      <div class="legend">
+        <span><span class="sw" style="background:#94a3b8;border-radius:50%"></span>◎ 25년 전체 객당 콜</span>
+        <span><span class="sw" style="background:#3b82f6;border-radius:50%"></span>◎ 26년 전체 객당 콜</span>
+        <span><span class="sw" style="background:#ef4444;border-radius:50%"></span>📞 1,166 객당 콜</span>
+        <span><span class="sw" style="background:#10b981;border-radius:50%"></span>🤖 1,166 객당 챗봇</span>
+        <span style="margin-left:auto;color:#94a3b8;font-style:italic">객당 = 합계 / 인원</span>
+      </div>
+      <div class="chart-wrap" style="height:300px">
+        <canvas id="r2MonthlyChart"></canvas>
+      </div>
+    </div>
+
+  </div><!-- /tab-r2t1 -->
 
 </div>
 
@@ -2002,10 +2105,743 @@ function drawAnswerRate() {
   });
 }
 
+// ── R2 1차 타격 데이터 (inline) ──
+const R2_DATA = {
+  "generated_at": "2026-05-28 13:18",
+  "target_count": 1166,
+  "converted_count": 432,
+  "active_clients": 15025,
+  "total_clients": 19767,
+  "target_share_pct": 7.76,
+  "service_2026": {
+    "call_count_target": 15082,
+    "chatbot_count_target": 645,
+    "total_service_target": 15727,
+    "call_share_in_total_pct": 12.8
+  },
+  "chatbot_adoption_target": {
+    "ever_used": 432,
+    "adoption_rate_pct": 37.05
+  },
+  "may_series": [
+    {
+      "date": "2026-05-02",
+      "call_count": 52,
+      "call_unique_inst": 39,
+      "chatbot_count": 0,
+      "chatbot_unique_inst": 0,
+      "call_count_432": 19,
+      "call_unique_inst_432": 16,
+      "day_total_call": 280
+    },
+    {
+      "date": "2026-05-04",
+      "call_count": 197,
+      "call_unique_inst": 149,
+      "chatbot_count": 0,
+      "chatbot_unique_inst": 0,
+      "call_count_432": 71,
+      "call_unique_inst_432": 57,
+      "day_total_call": 1174
+    },
+    {
+      "date": "2026-05-06",
+      "call_count": 225,
+      "call_unique_inst": 177,
+      "chatbot_count": 0,
+      "chatbot_unique_inst": 0,
+      "call_count_432": 83,
+      "call_unique_inst_432": 68,
+      "day_total_call": 1270
+    },
+    {
+      "date": "2026-05-07",
+      "call_count": 143,
+      "call_unique_inst": 108,
+      "chatbot_count": 32,
+      "chatbot_unique_inst": 32,
+      "call_count_432": 78,
+      "call_unique_inst_432": 54,
+      "day_total_call": 1153
+    },
+    {
+      "date": "2026-05-08",
+      "call_count": 158,
+      "call_unique_inst": 115,
+      "chatbot_count": 34,
+      "chatbot_unique_inst": 34,
+      "call_count_432": 88,
+      "call_unique_inst_432": 59,
+      "day_total_call": 1151
+    },
+    {
+      "date": "2026-05-09",
+      "call_count": 41,
+      "call_unique_inst": 35,
+      "chatbot_count": 9,
+      "chatbot_unique_inst": 9,
+      "call_count_432": 20,
+      "call_unique_inst_432": 18,
+      "day_total_call": 264
+    },
+    {
+      "date": "2026-05-10",
+      "call_count": 0,
+      "call_unique_inst": 0,
+      "chatbot_count": 1,
+      "chatbot_unique_inst": 1,
+      "call_count_432": 0,
+      "call_unique_inst_432": 0,
+      "day_total_call": 0
+    },
+    {
+      "date": "2026-05-11",
+      "call_count": 144,
+      "call_unique_inst": 113,
+      "chatbot_count": 40,
+      "chatbot_unique_inst": 40,
+      "call_count_432": 65,
+      "call_unique_inst_432": 55,
+      "day_total_call": 1218
+    },
+    {
+      "date": "2026-05-12",
+      "call_count": 135,
+      "call_unique_inst": 101,
+      "chatbot_count": 66,
+      "chatbot_unique_inst": 66,
+      "call_count_432": 91,
+      "call_unique_inst_432": 69,
+      "day_total_call": 1044
+    },
+    {
+      "date": "2026-05-13",
+      "call_count": 105,
+      "call_unique_inst": 86,
+      "chatbot_count": 36,
+      "chatbot_unique_inst": 36,
+      "call_count_432": 63,
+      "call_unique_inst_432": 50,
+      "day_total_call": 919
+    },
+    {
+      "date": "2026-05-14",
+      "call_count": 113,
+      "call_unique_inst": 82,
+      "chatbot_count": 44,
+      "chatbot_unique_inst": 44,
+      "call_count_432": 79,
+      "call_unique_inst_432": 56,
+      "day_total_call": 997
+    },
+    {
+      "date": "2026-05-15",
+      "call_count": 97,
+      "call_unique_inst": 84,
+      "chatbot_count": 45,
+      "chatbot_unique_inst": 45,
+      "call_count_432": 61,
+      "call_unique_inst_432": 53,
+      "day_total_call": 861
+    },
+    {
+      "date": "2026-05-16",
+      "call_count": 30,
+      "call_unique_inst": 27,
+      "chatbot_count": 18,
+      "chatbot_unique_inst": 18,
+      "call_count_432": 19,
+      "call_unique_inst_432": 16,
+      "day_total_call": 261
+    },
+    {
+      "date": "2026-05-18",
+      "call_count": 133,
+      "call_unique_inst": 93,
+      "chatbot_count": 41,
+      "chatbot_unique_inst": 41,
+      "call_count_432": 87,
+      "call_unique_inst_432": 57,
+      "day_total_call": 1179
+    },
+    {
+      "date": "2026-05-19",
+      "call_count": 138,
+      "call_unique_inst": 94,
+      "chatbot_count": 47,
+      "chatbot_unique_inst": 47,
+      "call_count_432": 88,
+      "call_unique_inst_432": 56,
+      "day_total_call": 1056
+    },
+    {
+      "date": "2026-05-20",
+      "call_count": 107,
+      "call_unique_inst": 87,
+      "chatbot_count": 31,
+      "chatbot_unique_inst": 31,
+      "call_count_432": 73,
+      "call_unique_inst_432": 56,
+      "day_total_call": 884
+    },
+    {
+      "date": "2026-05-21",
+      "call_count": 116,
+      "call_unique_inst": 89,
+      "chatbot_count": 34,
+      "chatbot_unique_inst": 34,
+      "call_count_432": 66,
+      "call_unique_inst_432": 53,
+      "day_total_call": 936
+    },
+    {
+      "date": "2026-05-22",
+      "call_count": 138,
+      "call_unique_inst": 97,
+      "chatbot_count": 46,
+      "chatbot_unique_inst": 46,
+      "call_count_432": 91,
+      "call_unique_inst_432": 62,
+      "day_total_call": 1057
+    },
+    {
+      "date": "2026-05-23",
+      "call_count": 35,
+      "call_unique_inst": 22,
+      "chatbot_count": 15,
+      "chatbot_unique_inst": 15,
+      "call_count_432": 28,
+      "call_unique_inst_432": 16,
+      "day_total_call": 242
+    },
+    {
+      "date": "2026-05-24",
+      "call_count": 0,
+      "call_unique_inst": 0,
+      "chatbot_count": 1,
+      "chatbot_unique_inst": 1,
+      "call_count_432": 0,
+      "call_unique_inst_432": 0,
+      "day_total_call": 0
+    },
+    {
+      "date": "2026-05-26",
+      "call_count": 145,
+      "call_unique_inst": 112,
+      "chatbot_count": 42,
+      "chatbot_unique_inst": 42,
+      "call_count_432": 88,
+      "call_unique_inst_432": 69,
+      "day_total_call": 1109
+    },
+    {
+      "date": "2026-05-27",
+      "call_count": 12,
+      "call_unique_inst": 10,
+      "chatbot_count": 0,
+      "chatbot_unique_inst": 0,
+      "call_count_432": 6,
+      "call_unique_inst_432": 6,
+      "day_total_call": 102
+    }
+  ],
+  "monthly_ratio": [
+    {
+      "ym": "2025-01",
+      "target_service": 2605,
+      "total_service": 23011,
+      "ratio_pct": 11.32,
+      "target_call": 2605,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-02",
+      "target_service": 2499,
+      "total_service": 22731,
+      "ratio_pct": 10.99,
+      "target_call": 2499,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-03",
+      "target_service": 2597,
+      "total_service": 24931,
+      "ratio_pct": 10.42,
+      "target_call": 2597,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-04",
+      "target_service": 2995,
+      "total_service": 27993,
+      "ratio_pct": 10.7,
+      "target_call": 2995,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-05",
+      "target_service": 2694,
+      "total_service": 24821,
+      "ratio_pct": 10.85,
+      "target_call": 2694,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-06",
+      "target_service": 2577,
+      "total_service": 23600,
+      "ratio_pct": 10.92,
+      "target_call": 2577,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-07",
+      "target_service": 2907,
+      "total_service": 25454,
+      "ratio_pct": 11.42,
+      "target_call": 2907,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-08",
+      "target_service": 2535,
+      "total_service": 22241,
+      "ratio_pct": 11.4,
+      "target_call": 2535,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-09",
+      "target_service": 2871,
+      "total_service": 25571,
+      "ratio_pct": 11.23,
+      "target_call": 2871,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-10",
+      "target_service": 2483,
+      "total_service": 21319,
+      "ratio_pct": 11.65,
+      "target_call": 2483,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-11",
+      "target_service": 2573,
+      "total_service": 22364,
+      "ratio_pct": 11.51,
+      "target_call": 2573,
+      "target_chat": 0
+    },
+    {
+      "ym": "2025-12",
+      "target_service": 2855,
+      "total_service": 25048,
+      "ratio_pct": 11.4,
+      "target_call": 2855,
+      "target_chat": 0
+    },
+    {
+      "ym": "2026-01",
+      "target_service": 2985,
+      "total_service": 27767,
+      "ratio_pct": 10.75,
+      "target_call": 2985,
+      "target_chat": 0
+    },
+    {
+      "ym": "2026-02",
+      "target_service": 2135,
+      "total_service": 19929,
+      "ratio_pct": 10.71,
+      "target_call": 2135,
+      "target_chat": 0
+    },
+    {
+      "ym": "2026-03",
+      "target_service": 2810,
+      "total_service": 25901,
+      "ratio_pct": 10.85,
+      "target_call": 2810,
+      "target_chat": 0
+    },
+    {
+      "ym": "2026-04",
+      "target_service": 4951,
+      "total_service": 38132,
+      "ratio_pct": 12.98,
+      "target_call": 4888,
+      "target_chat": 63
+    },
+    {
+      "ym": "2026-05",
+      "target_service": 2846,
+      "total_service": 25046,
+      "ratio_pct": 11.36,
+      "target_call": 2264,
+      "target_chat": 582
+    }
+  ],
+  "monthly_per_capita": [
+    {
+      "ym": "2026-01",
+      "call_1166": 2985,
+      "call_432": 1450,
+      "chat_432": 0,
+      "call_total": 27767,
+      "per_capita_call_1166": 2.56,
+      "per_capita_call_432": 3.356,
+      "per_capita_chat_432": 0.0,
+      "per_capita_call_total": 1.848
+    },
+    {
+      "ym": "2026-02",
+      "call_1166": 2135,
+      "call_432": 1054,
+      "chat_432": 0,
+      "call_total": 19929,
+      "per_capita_call_1166": 1.831,
+      "per_capita_call_432": 2.44,
+      "per_capita_chat_432": 0.0,
+      "per_capita_call_total": 1.326
+    },
+    {
+      "ym": "2026-03",
+      "call_1166": 2810,
+      "call_432": 1329,
+      "chat_432": 0,
+      "call_total": 25901,
+      "per_capita_call_1166": 2.41,
+      "per_capita_call_432": 3.076,
+      "per_capita_chat_432": 0.0,
+      "per_capita_call_total": 1.724
+    },
+    {
+      "ym": "2026-04",
+      "call_1166": 4888,
+      "call_432": 1964,
+      "chat_432": 63,
+      "call_total": 27086,
+      "per_capita_call_1166": 4.192,
+      "per_capita_call_432": 4.546,
+      "per_capita_chat_432": 0.146,
+      "per_capita_call_total": 1.803
+    },
+    {
+      "ym": "2026-05",
+      "call_1166": 2264,
+      "call_432": 1264,
+      "chat_432": 582,
+      "call_total": 17157,
+      "per_capita_call_1166": 1.942,
+      "per_capita_call_432": 2.926,
+      "per_capita_chat_432": 1.347,
+      "per_capita_call_total": 1.142
+    }
+  ],
+  "monthly_baseline_25": [
+    {
+      "ym": "2025-01",
+      "month": 1,
+      "call_total": 23011,
+      "per_capita_call_total": 1.532
+    },
+    {
+      "ym": "2025-02",
+      "month": 2,
+      "call_total": 22731,
+      "per_capita_call_total": 1.513
+    },
+    {
+      "ym": "2025-03",
+      "month": 3,
+      "call_total": 24931,
+      "per_capita_call_total": 1.659
+    },
+    {
+      "ym": "2025-04",
+      "month": 4,
+      "call_total": 27993,
+      "per_capita_call_total": 1.863
+    },
+    {
+      "ym": "2025-05",
+      "month": 5,
+      "call_total": 24821,
+      "per_capita_call_total": 1.652
+    },
+    {
+      "ym": "2025-06",
+      "month": 6,
+      "call_total": 23600,
+      "per_capita_call_total": 1.571
+    },
+    {
+      "ym": "2025-07",
+      "month": 7,
+      "call_total": 25454,
+      "per_capita_call_total": 1.694
+    },
+    {
+      "ym": "2025-08",
+      "month": 8,
+      "call_total": 22241,
+      "per_capita_call_total": 1.48
+    },
+    {
+      "ym": "2025-09",
+      "month": 9,
+      "call_total": 25571,
+      "per_capita_call_total": 1.702
+    },
+    {
+      "ym": "2025-10",
+      "month": 10,
+      "call_total": 21319,
+      "per_capita_call_total": 1.419
+    },
+    {
+      "ym": "2025-11",
+      "month": 11,
+      "call_total": 22364,
+      "per_capita_call_total": 1.488
+    },
+    {
+      "ym": "2025-12",
+      "month": 12,
+      "call_total": 25048,
+      "per_capita_call_total": 1.667
+    }
+  ]
+};
+
+function drawR2MayChart() {
+  const ctx = document.getElementById('r2MayChart');
+  if (!ctx || !R2_DATA || !R2_DATA.may_series) return;
+  // 토요일+공휴일 제거 + 데이터 미완성 일자 (5/27 D-1)
+  const EXCLUDED = new Set(['2026-05-02','2026-05-09','2026-05-10','2026-05-16','2026-05-23','2026-05-24','2026-05-27']);
+  const series = R2_DATA.may_series.filter(r => !EXCLUDED.has(r.date));
+
+  // 객당 평균 (분모 1166 / 432 / 432 / 15025)
+  const N_1166 = 1166;
+  const N_432 = R2_DATA.converted_count || 432;
+  const N_ACTIVE = R2_DATA.active_clients || 15025;
+  const labels = series.map(r => r.date.slice(5));
+  const callData    = series.map(r => +(r.call_count / N_1166).toFixed(3));
+  const call432Data = series.map(r => +((r.call_count_432 ?? 0) / N_432).toFixed(3));
+  const chatData    = series.map(r => +(r.chatbot_count / N_1166).toFixed(3));
+  const callAllData = series.map(r => +((r.day_total_call ?? 0) / N_ACTIVE).toFixed(3));
+
+  new Chart(ctx.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '◎ 전체 고객 객당 콜', data: callAllData,
+          borderColor: '#94a3b8',
+          backgroundColor: 'rgba(148,163,184,.06)',
+          borderWidth: 1.8, tension: 0.3, borderDash: [4, 3],
+          pointRadius: 2, pointHoverRadius: 4, pointBackgroundColor: '#94a3b8',
+          fill: false
+        },
+        {
+          label: '📞 1,166 객당 콜', data: callData,
+          borderColor: '#ef4444',
+          backgroundColor: 'rgba(239,68,68,.10)',
+          borderWidth: 2, tension: 0.3,
+          pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#ef4444',
+          fill: false
+        },
+        {
+          label: '🤖 1,166 객당 챗봇', data: chatData,
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16,185,129,.15)',
+          borderWidth: 2, tension: 0.3,
+          pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#10b981',
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor:'#0f172a', borderColor:'#334155', borderWidth:1,
+          titleColor:'#fbbf24', bodyColor:'#e2e8f0',
+          callbacks: {
+            label: (ctx) => {
+              const r = series[ctx.dataIndex];
+              if (!r) return `${ctx.dataset.label}: ${ctx.parsed.y}`;
+              if (ctx.datasetIndex === 0) {
+                return `◎ 전체 ${N_ACTIVE.toLocaleString()} 객당 ${((r.day_total_call||0)/N_ACTIVE).toFixed(2)}회`;
+              } else if (ctx.datasetIndex === 1) {
+                return `📞 1,166 객당 ${(r.call_count/N_1166).toFixed(2)}회 (합계 ${r.call_count})`;
+              } else {
+                return `🤖 1,166 객당 ${(r.chatbot_count/N_1166).toFixed(2)}회 (합계 ${r.chatbot_count})`;
+              }
+            }
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#cbd5e1', font: { size: 10.5 } }, grid: { color:'#1e293b' } },
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#94a3b8', font: { size: 10 } },
+          grid: { color:'#1e293b' },
+          title: { display: true, text: '객당 평균 건수', color: '#94a3b8', font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
+function drawR2MonthlyChart() {
+  const ctx = document.getElementById('r2MonthlyChart');
+  if (!ctx || !R2_DATA || !R2_DATA.monthly_per_capita) return;
+  const mp = R2_DATA.monthly_per_capita;
+  const b25 = R2_DATA.monthly_baseline_25 || [];
+
+  // x축: 1~12월 고정
+  const labels = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  const monthOf = (ym) => parseInt(ym.split('-')[1]);
+
+  // 25년 전체 객당 콜 (1~12월)
+  const baselineData = labels.map((_, i) => {
+    const r = b25.find(x => x.month === i + 1);
+    return r ? r.per_capita_call_total : null;
+  });
+  // 26년 전체 객당 콜 (1~5월만)
+  const d26Total = labels.map((_, i) => {
+    const r = mp.find(x => monthOf(x.ym) === i + 1);
+    return r ? r.per_capita_call_total : null;
+  });
+  // 26년 데이터 (1~5월만, 6~12월 = null)
+  const d1166 = labels.map((_, i) => {
+    const r = mp.find(x => monthOf(x.ym) === i + 1);
+    return r ? r.per_capita_call_1166 : null;
+  });
+  // 1166 객당 챗봇 — chat_432 / 1166 (chat_432 는 1166 안의 챗봇 사용 횟수 = 432 의 챗봇 횟수 동일)
+  const d432b = labels.map((_, i) => {
+    const r = mp.find(x => monthOf(x.ym) === i + 1);
+    return r ? +(r.chat_432 / 1166).toFixed(3) : null;
+  });
+
+  new Chart(ctx.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '◎ 25년 전체 객당 콜', data: baselineData,
+          borderColor: '#94a3b8',
+          backgroundColor: 'rgba(148,163,184,.06)',
+          borderWidth: 1.8, tension: 0.3, borderDash: [4, 3],
+          pointRadius: 2, pointHoverRadius: 4, pointBackgroundColor: '#94a3b8',
+          fill: false,
+          spanGaps: true
+        },
+        {
+          label: '◎ 26년 전체 객당 콜', data: d26Total,
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59,130,246,.06)',
+          borderWidth: 1.8, tension: 0.3, borderDash: [4, 3],
+          pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#3b82f6',
+          fill: false
+        },
+        {
+          label: '📞 1,166 객당 콜', data: d1166,
+          borderColor: '#ef4444',
+          backgroundColor: 'rgba(239,68,68,.10)',
+          borderWidth: 2, tension: 0.3,
+          pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#ef4444',
+          fill: false
+        },
+        {
+          label: '🤖 1,166 객당 챗봇', data: d432b,
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16,185,129,.15)',
+          borderWidth: 2, tension: 0.3,
+          pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#10b981',
+          fill: true
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor:'#0f172a', borderColor:'#334155', borderWidth:1,
+          titleColor:'#fbbf24', bodyColor:'#e2e8f0',
+          callbacks: {
+            label: (ctx) => {
+              const i = ctx.dataIndex;
+              if (ctx.datasetIndex === 0) {
+                const r = b25.find(x => x.month === i + 1);
+                if (!r) return null;
+                return `◎ 25-${String(i+1).padStart(2,'0')} 전체 객당 ${r.per_capita_call_total.toFixed(2)}회`;
+              }
+              const r = mp.find(x => monthOf(x.ym) === i + 1);
+              if (!r) return null;
+              if (ctx.datasetIndex === 1) {
+                return `◎ 26-${String(i+1).padStart(2,'0')} 전체 객당 ${r.per_capita_call_total.toFixed(2)}회`;
+              } else if (ctx.datasetIndex === 2) {
+                return `📞 26-${String(i+1).padStart(2,'0')} 1,166 객당 ${r.per_capita_call_1166.toFixed(2)}회`;
+              } else {
+                return `🤖 26-${String(i+1).padStart(2,'0')} 1,166 객당 ${(r.chat_432/1166).toFixed(2)}회 (합계 ${r.chat_432})`;
+              }
+            }
+          }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#cbd5e1', font: { size: 11, weight: '600' } }, grid: { color:'#1e293b' } },
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#94a3b8', font: { size: 10 } },
+          grid: { color:'#1e293b' },
+          title: { display: true, text: '객당 평균 건수', color: '#94a3b8', font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
+// ── 탭 스위칭 ──
+function setupTabs() {
+  const btns = document.querySelectorAll('.tabs button');
+  const contents = document.querySelectorAll('.tab-content');
+  let r2Drawn = false;
+  function drawR2Once() {
+    if (r2Drawn) return;
+    drawR2MayChart();
+    drawR2MonthlyChart();
+    r2Drawn = true;
+  }
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      btns.forEach(b => b.classList.toggle('active', b === btn));
+      contents.forEach(c => c.classList.toggle('active', c.id === 'tab-' + target));
+      if (target === 'r2t1') drawR2Once();
+    });
+  });
+  // 페이지 로드 시 활성 탭이 r2t1 이면 즉시 그림
+  const initial = document.querySelector('.tabs button.active');
+  if (initial && initial.dataset.tab === 'r2t1') drawR2Once();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   drawChart();
   drawAnswerRate();
   drawTable();
+  setupTabs();
 });
 </script>
 
