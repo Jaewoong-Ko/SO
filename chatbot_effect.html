@@ -93,14 +93,150 @@
 <body>
 <div class="wrap">
 
-  <h1>서비스 인입감소 효과 분석 <span class="badge">D-1 = <span id="dvDate">2026-05-27</span></span></h1>
-  <div class="sub">4월부터 챗봇이 콜을 얼마나 대체하고 있는지 — 하루 평균 서비스 받은 병원 수 기준</div>
+  <h1>챗봇 사용 활성화 현황 <span class="badge">D-1 = <span id="dvDate">2026-05-28</span></span></h1>
 
-  <!-- 탭 UI -->
-  <div class="tabs">
-    <button class="active" data-tab="r2t1">🎯 콜 안내 대상 1,166처</button>
-    <button data-tab="main">📊 전체 효과 분석</button>
+  <!-- 탭 UI — v2 만 남김 (다른 탭 제거) -->
+  <div class="tabs" style="display:none">
+    <button class="active" data-tab="v2">🔬 분포 분석</button>
   </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- 탭 v2: 분포 분석 (NEW) -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="tab-content active" id="tab-v2">
+
+    <!-- Summary -->
+    <div class="panel" style="background:linear-gradient(135deg,#1e3a5f 0%,#1e293b 100%);border:1px solid #475569;border-left:3px solid #3b82f6;padding:16px 20px;margin-bottom:18px">
+      <div style="font-size:12px;color:#93c5fd;margin-bottom:10px;font-weight:800;letter-spacing:.5px">📋 SUMMARY</div>
+      <ul style="margin:0;padding-left:20px;font-size:13.5px;color:#e2e8f0;line-height:1.8">
+        <li>26년 1~4월 콜 상위/중위/하위로 분류, 상위 20% 고객 중 <b style="color:#fde68a">챗봇 미사용 1,166처</b> 챗봇 유도 타겟 선정</li>
+        <li>콜 인입 시 챗봇 사용 안내를 통해 사용자 유입 유도 중</li>
+        <li>타겟 고객군, 4월 대비 5월 콜 <b style="color:#fde68a">2,383건 감소</b> <small style="color:#94a3b8">(4월 4,888건 → 5월 2,505건, −49%)</small></li>
+      </ul>
+    </div>
+
+    <!-- 1) 1~4월 콜 분포 -->
+    <div class="panel">
+      <h3>① 26년 1~4월 콜 분포 — 상위/중위/하위</h3>
+      <p style="font-size:12px;color:#94a3b8;margin:0 0 14px">
+        총 <b style="color:#cbd5e1">12,836처</b>의 기관이 콜 발생 · 총 <b style="color:#cbd5e1">100,683건</b>의 콜
+      </p>
+
+      <table style="font-size:15px;width:100%">
+        <thead>
+          <tr>
+            <th style="text-align:left;font-size:13px">구분</th>
+            <th style="font-size:13px">고객수</th>
+            <th style="font-size:13px">고객 비중</th>
+            <th style="font-size:13px">콜수</th>
+            <th style="font-size:13px">콜 비중</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="font-size:15px">
+            <td style="text-align:left;padding:10px 8px"><b style="color:#ef4444;font-size:16px">📞 상위 20%</b><br><small style="color:#94a3b8;font-size:12px">콜 多 집단</small></td>
+            <td style="padding:10px 8px"><b style="color:#fbbf24;font-size:18px">2,567</b>처<br><small style="color:#94a3b8;font-size:12.5px">(챗봇 미사용 <b style="color:#fde68a">1,166</b>처)</small></td>
+            <td style="padding:10px 8px;font-size:15px">20.0%</td>
+            <td style="padding:10px 8px"><b style="color:#fca5a5;font-size:17px">55,432</b>건</td>
+            <td style="padding:10px 8px"><b style="color:#fde68a;font-size:17px">55.1%</b></td>
+          </tr>
+          <tr style="background:#1a2236;font-size:15px">
+            <td style="text-align:left;padding:10px 8px"><b style="color:#94a3b8;font-size:16px">중위 50%</b><br><small style="color:#94a3b8;font-size:12px">중간 집단</small></td>
+            <td style="padding:10px 8px;font-size:16px">6,418처</td>
+            <td style="padding:10px 8px;font-size:15px">50.0%</td>
+            <td style="padding:10px 8px;font-size:16px">38,938건</td>
+            <td style="padding:10px 8px;font-size:16px">38.7%</td>
+          </tr>
+          <tr style="font-size:15px">
+            <td style="text-align:left;padding:10px 8px"><b style="color:#94a3b8;font-size:16px">하위 30%</b><br><small style="color:#94a3b8;font-size:12px">콜 적음</small></td>
+            <td style="padding:10px 8px;font-size:16px">3,851처</td>
+            <td style="padding:10px 8px;font-size:15px">30.0%</td>
+            <td style="padding:10px 8px;font-size:16px">6,313건</td>
+            <td style="padding:10px 8px;font-size:16px">6.3%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:11.5px;color:#cbd5e1;margin:14px 0 0;background:#0f172a;padding:10px 12px;border-radius:6px;border-left:3px solid #fbbf24">
+        💡 <b>상위 20%</b> 의 2,567처가 전체 콜의 <b style="color:#fde68a">55.1%</b> 를 차지 — 콜 부담의 절반이 이 20% 에 집중됨.
+        이 집단 중 <b style="color:#fbbf24">챗봇 미사용 1,166처</b> 가 안내 대상.
+      </p>
+    </div>
+
+    <!-- 2) 5월 안내 활동 funnel (이전 ③ → ②로 승격) -->
+    <div class="panel">
+      <h3>② 5월 안내 활동 — Funnel</h3>
+      <p style="font-size:12px;color:#94a3b8;margin:-6px 0 12px;line-height:1.6">
+        ※ 대상 고객 1,166처, 고객샘 고객정보에 <b style="color:#fde68a">Target 마크 일괄 표기</b> — 콜 인입 시 즉시 안내
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+
+        <!-- Stage 1: 대상 -->
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:12px;color:#94a3b8;width:140px;text-align:right">🎯 안내 대상</div>
+          <div style="flex:1;position:relative;height:48px;background:#0f172a;border-radius:8px;overflow:hidden;border:1px solid #334155">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,#3b82f6,#6366f1);display:flex;align-items:center;padding-left:14px;font-size:14px;font-weight:800;color:#fff">
+              1,166처
+              <span style="margin-left:auto;padding-right:14px;font-size:12px;font-weight:600;opacity:.9">상위 20% 中 챗봇 미사용</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 2: 5월 콜 인입 -->
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:12px;color:#94a3b8;width:140px;text-align:right">📞 5월 콜 인입</div>
+          <div style="flex:1;position:relative;height:48px;background:#0f172a;border-radius:8px;overflow:hidden;border:1px solid #334155">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:73.5%;background:linear-gradient(90deg,#f97316,#fbbf24);display:flex;align-items:center;padding-left:14px;font-size:14px;font-weight:800;color:#fff">
+              857처
+              <span style="margin-left:8px;font-size:12px;font-weight:600;opacity:.9">(1,166의 73.5%)</span>
+            </div>
+            <div style="position:absolute;left:73.5%;top:0;bottom:0;right:0;display:flex;align-items:center;padding-left:12px;font-size:12px;color:#64748b">
+              5월 콜 안 한 309처
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage 4: 전환 -->
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:12px;color:#94a3b8;width:140px;text-align:right">✅ 챗봇 신규 사용</div>
+          <div style="flex:1;position:relative;height:48px;background:#0f172a;border-radius:8px;overflow:hidden;border:1px solid #334155">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:29.2%;background:linear-gradient(90deg,#059669,#10b981);display:flex;align-items:center;padding-left:14px;font-size:14px;font-weight:800;color:#fff">
+              340처
+              <span style="margin-left:8px;font-size:12px;font-weight:600;opacity:.9">(캠페인 효과)</span>
+            </div>
+            <div style="position:absolute;left:29.2%;top:0;bottom:0;right:0;display:flex;align-items:center;padding-left:12px;font-size:12px;color:#64748b">
+              미전환 826처
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:#cbd5e1;margin:14px 0 0;background:#0f172a;padding:10px 12px;border-radius:6px;border-left:3px solid #10b981">
+        💡 캠페인 시작 후 <b style="color:#34d399">1,166처 중 340처(29.2%)가 챗봇 사용 시작</b>.
+        안내 받은 857처 기준 <b style="color:#34d399">전환율 39.7%</b>.
+      </p>
+    </div>
+
+    <!-- 3) 월별 추이 + 6월 예측 (이전 ② → ③으로 강등) -->
+    <div class="panel">
+      <h3>③ 1,166 안내 대상의 월별 추이 + 6월 예측</h3>
+      <div class="legend">
+        <span><span class="sw" style="background:#ef4444"></span>📞 콜만</span>
+        <span><span class="sw" style="background:#f59e0b"></span>📞 콜 + 🤖 챗봇</span>
+        <span><span class="sw" style="background:#10b981"></span>🤖 챗봇만 <small style="color:#94a3b8">(콜 발생 X)</small></span>
+        <span><span class="sw" style="background:#475569"></span>둘 다 없음</span>
+        <span style="margin-left:auto;color:#94a3b8;font-style:italic">6월 = 안내 효과 + 영업일 정상화 가정</span>
+      </div>
+      <div class="chart-wrap" style="height:340px">
+        <canvas id="v2MonthlyStack"></canvas>
+      </div>
+    </div>
+
+  </div><!-- /tab-v2 -->
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- (기존) 탭: 콜 안내 대상 1,166처 — 보존 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
 
   <!-- 탭 (기본 비활성): 전체 효과 분석 -->
   <div class="tab-content" id="tab-main">
@@ -288,7 +424,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- 탭 (기본 활성): 콜 안내 대상 1,166처 -->
   <!-- ═══════════════════════════════════════════════════════════ -->
-  <div class="tab-content active" id="tab-r2t1">
+  <div class="tab-content" id="tab-r2t1">
 
     <!-- 분석 관점 -->
     <div class="panel" style="background:linear-gradient(135deg,#3d2f0c 0%,#1e293b 100%);border:1px solid #475569;border-left:3px solid #fbbf24;padding:14px 18px;margin-bottom:18px">
@@ -2105,6 +2241,81 @@ function drawAnswerRate() {
   });
 }
 
+// ── V2 분포 분석 데이터 (inline) ──
+const V2_DATA = {
+  "generated_at": "2026-05-29 13:57",
+  "distribution_14": {
+    "top20": {
+      "count": 2567,
+      "call_sum": 55432,
+      "call_share_pct": 55.1,
+      "label": "상위 20%"
+    },
+    "mid50": {
+      "count": 6418,
+      "call_sum": 38938,
+      "call_share_pct": 38.7,
+      "label": "중위 50%"
+    },
+    "bot30": {
+      "count": 3851,
+      "call_sum": 6313,
+      "call_share_pct": 6.3,
+      "label": "하위 30%"
+    },
+    "total": {
+      "count": 12836,
+      "call_sum": 100683
+    }
+  },
+  "monthly_1166": {
+    "2026-04": {
+      "call_only": 1161,
+      "both": 0,
+      "chat_only": 0,
+      "none": 5
+    },
+    "2026-05": {
+      "call_only": 461,
+      "both": 396,
+      "chat_only": 40,
+      "none": 269
+    },
+    "2026-06_predict": {
+      "call_only": 363,
+      "both": 539,
+      "chat_only": 76,
+      "none": 188
+    }
+  },
+  "monthly_1166_calls": {
+    "2026-04": {
+      "call_only": 4888,
+      "both": 0,
+      "chat_only": 0,
+      "none": 0
+    },
+    "2026-05": {
+      "call_only": 1071,
+      "both": 1434,
+      "chat_only": 0,
+      "none": 0
+    },
+    "2026-06_predict": {
+      "call_only": 843,
+      "both": 1952,
+      "chat_only": 0,
+      "none": 0
+    }
+  },
+  "funnel_may": {
+    "target": 1166,
+    "called_in_may": 857,
+    "converted_campaign": 340,
+    "converted_total": 471
+  }
+};
+
 // ── R2 1차 타격 데이터 (inline) ──
 const R2_DATA = {
   "generated_at": "2026-05-28 13:18",
@@ -2813,16 +3024,187 @@ function drawR2MonthlyChart() {
   });
 }
 
+// ── V2 stack chart (1166 월별 분류) ──
+function drawV2MonthlyStack() {
+  const ctx = document.getElementById('v2MonthlyStack');
+  if (!ctx || !V2_DATA) return;
+  const m = V2_DATA.monthly_1166 || {};
+  const apr = m['2026-04'] || {};
+  const may = m['2026-05'] || {};
+  const jun = m['2026-06_predict'] || {};
+
+  const labels = ['4월 (실측)', '5월 (실측)', '6월 (예측)'];
+  const mkData = (key) => [apr[key]||0, may[key]||0, jun[key]||0];
+
+  // 예측 (6월) 은 alpha 낮춤
+  const colorFn = (base) => labels.map((l, i) => i === 2 ? base.replace(/,([\d.]+)\)$/, ',.45)') : base);
+
+  // Segment 사이 점선 연결 + 처수 라벨 plugin
+  const segConnectPlugin = {
+    id: 'segConnect',
+    afterDatasetsDraw(c) {
+      const ctxc = c.ctx;
+      const baseColors = ['rgba(239,68,68,1)', 'rgba(245,158,11,1)', 'rgba(16,185,129,1)', 'rgba(71,85,105,1)'];
+      c.data.datasets.forEach((ds, dsIdx) => {
+        const meta = c.getDatasetMeta(dsIdx);
+        const baseColor = baseColors[dsIdx] || '#fff';
+
+        // 1) 같은 카테고리 segment 중심점끼리 점선 연결
+        ctxc.save();
+        ctxc.strokeStyle = baseColor.replace('1)', '.9)');
+        ctxc.setLineDash([4, 3]);
+        ctxc.lineWidth = 1.5;
+        ctxc.beginPath();
+        let prev = null;
+        meta.data.forEach((bar, i) => {
+          const v = ds.data[i] || 0;
+          if (v <= 0) { prev = null; return; }
+          const cx = bar.x;
+          const cy = (bar.y + bar.base) / 2;
+          if (prev) { ctxc.moveTo(prev.x, prev.y); ctxc.lineTo(cx, cy); }
+          prev = { x: cx, y: cy };
+        });
+        ctxc.stroke();
+        ctxc.restore();
+
+        // 2) 각 segment 중심에 처수 + 발생 콜수 라벨
+        const ymKeys = ['2026-04', '2026-05', '2026-06_predict'];
+        const catKeys = ['call_only', 'both', 'chat_only', 'none'];
+        const catKey = catKeys[dsIdx];
+        meta.data.forEach((bar, i) => {
+          const v = ds.data[i] || 0;
+          if (v <= 0) return;
+          const cx = bar.x;
+          const cy = (bar.y + bar.base) / 2;
+          const callCount = V2_DATA.monthly_1166_calls?.[ymKeys[i]]?.[catKey] ?? 0;
+          ctxc.save();
+          if (v >= 60) {
+            // 큰 segment — 안쪽 중앙
+            ctxc.fillStyle = '#fff';
+            ctxc.font = 'bold 12px sans-serif';
+            ctxc.textAlign = 'center';
+            ctxc.textBaseline = 'middle';
+            ctxc.shadowColor = 'rgba(0,0,0,.5)';
+            ctxc.shadowBlur = 3;
+            if (callCount > 0) {
+              ctxc.fillText(`${v}처`, cx, cy - 6);
+              ctxc.font = '10px sans-serif';
+              ctxc.fillStyle = 'rgba(255,255,255,.85)';
+              ctxc.fillText(`${callCount.toLocaleString()}콜`, cx, cy + 7);
+            } else {
+              ctxc.fillText(`${v}처`, cx, cy);
+            }
+          } else {
+            // 작은 segment — 막대 우측 바깥에 콜아웃 표시
+            const barW = bar.width || 60;
+            const lineFromX = cx + barW / 2;
+            const lineToX = lineFromX + 14;
+            const labelX = lineToX + 4;
+            ctxc.strokeStyle = baseColor;
+            ctxc.lineWidth = 1.2;
+            ctxc.setLineDash([]);
+            ctxc.beginPath();
+            ctxc.moveTo(lineFromX, cy);
+            ctxc.lineTo(lineToX, cy);
+            ctxc.stroke();
+            ctxc.fillStyle = baseColor;
+            ctxc.font = 'bold 11.5px sans-serif';
+            ctxc.textAlign = 'left';
+            ctxc.textBaseline = 'middle';
+            ctxc.fillText(`${v}처`, labelX, cy);
+          }
+          ctxc.restore();
+        });
+      });
+    }
+  };
+
+  new Chart(ctx.getContext('2d'), {
+    type: 'bar',
+    plugins: [segConnectPlugin],
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: '📞 콜만',
+          data: mkData('call_only'),
+          backgroundColor: colorFn('rgba(239,68,68,1)'),
+          stack: 's',
+        },
+        {
+          label: '📞 콜 + 🤖 챗봇',
+          data: mkData('both'),
+          backgroundColor: colorFn('rgba(245,158,11,1)'),
+          stack: 's',
+        },
+        {
+          label: '🤖 챗봇만',
+          data: mkData('chat_only'),
+          backgroundColor: colorFn('rgba(16,185,129,1)'),
+          stack: 's',
+        },
+        {
+          label: '둘 다 없음',
+          data: mkData('none'),
+          backgroundColor: colorFn('rgba(71,85,105,1)'),
+          stack: 's',
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor:'#0f172a', borderColor:'#334155', borderWidth:1,
+          titleColor:'#fbbf24', bodyColor:'#e2e8f0',
+          callbacks: {
+            label: (c) => {
+              const total = 1166;
+              const v = c.parsed.y || 0;
+              return `${c.dataset.label}: ${v}처 (${(v/total*100).toFixed(1)}%)`;
+            },
+            footer: (items) => {
+              const total = items.reduce((s,i) => s + (i.parsed.y||0), 0);
+              return `합계: ${total}처`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          ticks: { color: '#cbd5e1', font: { size: 12, weight: '600' } },
+          grid: { color:'#1e293b' }
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true, max: 1200,
+          ticks: { color: '#94a3b8', font: { size: 10 } },
+          grid: { color:'#1e293b' },
+          title: { display: true, text: '기관수 (총 1,166)', color: '#94a3b8', font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
 // ── 탭 스위칭 ──
 function setupTabs() {
   const btns = document.querySelectorAll('.tabs button');
   const contents = document.querySelectorAll('.tab-content');
-  let r2Drawn = false;
+  let r2Drawn = false, v2Drawn = false;
   function drawR2Once() {
     if (r2Drawn) return;
     drawR2MayChart();
     drawR2MonthlyChart();
     r2Drawn = true;
+  }
+  function drawV2Once() {
+    if (v2Drawn) return;
+    drawV2MonthlyStack();
+    v2Drawn = true;
   }
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -2830,11 +3212,15 @@ function setupTabs() {
       btns.forEach(b => b.classList.toggle('active', b === btn));
       contents.forEach(c => c.classList.toggle('active', c.id === 'tab-' + target));
       if (target === 'r2t1') drawR2Once();
+      if (target === 'v2') drawV2Once();
     });
   });
-  // 페이지 로드 시 활성 탭이 r2t1 이면 즉시 그림
+  // 페이지 로드 시 활성 탭에 따라 차트 즉시 그림
   const initial = document.querySelector('.tabs button.active');
-  if (initial && initial.dataset.tab === 'r2t1') drawR2Once();
+  if (initial) {
+    if (initial.dataset.tab === 'r2t1') drawR2Once();
+    if (initial.dataset.tab === 'v2') drawV2Once();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
