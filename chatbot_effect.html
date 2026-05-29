@@ -112,28 +112,28 @@
 
         <!-- 타겟 선정 -->
         <div style="text-align:center;padding:0 6px">
-          <div style="font-size:11.5px;color:#475569;font-weight:700;margin-bottom:4px">🎯 타겟 선정</div>
+          <div style="font-size:14px;color:#1e293b;font-weight:800;margin-bottom:6px;letter-spacing:.2px">🎯 타겟 선정</div>
           <div style="font-size:28px;font-weight:900;color:#0f172a;line-height:1">1,166<small style="font-size:13px;color:#64748b;font-weight:700">처</small></div>
           <div style="font-size:11.5px;color:#475569;margin-top:5px;line-height:1.4">콜 분포 분석<br><b style="color:#334155">상위 20% + 챗봇 미사용</b></div>
         </div>
 
         <!-- 활동 -->
         <div style="text-align:center;border-left:1px solid #cbd5e1;padding:0 6px">
-          <div style="font-size:11.5px;color:#475569;font-weight:700;margin-bottom:4px">📣 활동</div>
+          <div style="font-size:14px;color:#1e293b;font-weight:800;margin-bottom:6px;letter-spacing:.2px">📣 활동</div>
           <div style="font-size:22px;font-weight:900;color:#9333ea;line-height:1.1">챗봇 사용 안내</div>
           <div style="font-size:11.5px;color:#475569;margin-top:5px;line-height:1.4"><b style="color:#334155">타겟 고객 콜 인입 시</b></div>
         </div>
 
         <!-- 결과 -->
         <div style="text-align:center;border-left:1px solid #cbd5e1;padding:0 6px">
-          <div style="font-size:11.5px;color:#475569;font-weight:700;margin-bottom:4px">📉 결과</div>
-          <div style="font-size:24px;font-weight:900;color:#dc2626;line-height:1.05">2,383건 ↓</div>
+          <div style="font-size:14px;color:#1e293b;font-weight:800;margin-bottom:6px;letter-spacing:.2px">📉 결과</div>
+          <div style="font-size:24px;font-weight:900;color:#dc2626;line-height:1.05">2,383건 콜 ↓</div>
           <div style="font-size:11.5px;color:#475569;margin-top:5px;line-height:1.4">4,888 → 2,505 <b style="color:#dc2626">(−49%)</b></div>
         </div>
 
         <!-- 예정 -->
         <div style="text-align:center;border-left:1px solid #cbd5e1;padding:0 6px">
-          <div style="font-size:11.5px;color:#475569;font-weight:700;margin-bottom:4px">🚀 예정</div>
+          <div style="font-size:14px;color:#1e293b;font-weight:800;margin-bottom:6px;letter-spacing:.2px">🚀 예정</div>
           <div style="font-size:18px;font-weight:900;color:#16a34a;line-height:1.2">챗봇 직접 안내<br>지속</div>
           <div style="font-size:11.5px;color:#475569;margin-top:5px;line-height:1.4"><b style="color:#334155">콜 多 고객 집중</b></div>
         </div>
@@ -143,7 +143,7 @@
 
     <!-- 1) 1~4월 콜 분포 (도넛 + 카드 3개) -->
     <div class="panel">
-      <h3>① 26년 1~4월 콜 분포 — 상위 20%가 전체 콜의 절반 이상 차지</h3>
+      <h3>① 26년 1~4월 콜 분포 — <span style="color:#dc2626">상위 20%</span>가 전체 콜의 <span style="color:#dc2626">절반 이상</span> 차지</h3>
       <p style="font-size:12px;color:#334155;margin:0 0 14px">
         총 <b style="color:#1e293b">12,836처</b>의 기관이 콜 발생 · 총 <b style="color:#1e293b">100,683건</b>의 콜
       </p>
@@ -171,7 +171,13 @@
 
           <div style="font-size:11.5px;color:#334155">고객수</div>
           <div style="font-size:26px;font-weight:800;color:#d97706;line-height:1.1">2,567<small style="font-size:13px;color:#334155;font-weight:600">처</small></div>
-          <div style="font-size:12px;color:#b45309;margin-top:3px">↳ 챗봇 미사용 <b style="font-size:14px">1,166</b>처 <small style="color:#334155;font-weight:500">(안내 대상)</small></div>
+          <!-- 최종 타겟 강조 박스 -->
+          <div style="margin-top:8px;background:linear-gradient(135deg,#fef3c7,#fed7aa);border:1.5px solid #f59e0b;border-radius:8px;padding:8px 10px;box-shadow:0 1px 6px rgba(245,158,11,.25)">
+            <div style="font-size:10.5px;color:#b45309;font-weight:800;letter-spacing:.3px;margin-bottom:2px">🎯 최종 타겟</div>
+            <div style="font-size:14.5px;font-weight:900;color:#7c2d12;line-height:1.15">
+              챗봇 미사용 <span style="font-size:20px;color:#b45309">1,166</span><small style="font-size:11px">처</small>
+            </div>
+          </div>
 
           <div style="height:1px;background:#94a3b8;margin:12px 0"></div>
 
@@ -195,7 +201,11 @@
 
           <div style="font-size:11.5px;color:#334155">고객수</div>
           <div style="font-size:26px;font-weight:800;color:#1e293b;line-height:1.1">6,418<small style="font-size:13px;color:#334155;font-weight:600">처</small></div>
-          <div style="font-size:12px;color:transparent;margin-top:3px;visibility:hidden">·</div>
+          <!-- placeholder (상위 카드의 최종 타겟 박스와 동일 높이) -->
+          <div style="visibility:hidden;margin-top:8px;border:1.5px solid transparent;border-radius:8px;padding:8px 10px">
+            <div style="font-size:10.5px;font-weight:800;letter-spacing:.3px;margin-bottom:2px">_</div>
+            <div style="font-size:14.5px;font-weight:900;line-height:1.15">_ <span style="font-size:20px">_</span><small style="font-size:11px">_</small></div>
+          </div>
 
           <div style="height:1px;background:#94a3b8;margin:12px 0"></div>
 
@@ -219,7 +229,11 @@
 
           <div style="font-size:11.5px;color:#334155">고객수</div>
           <div style="font-size:26px;font-weight:800;color:#334155;line-height:1.1">3,851<small style="font-size:13px;color:#334155;font-weight:600">처</small></div>
-          <div style="font-size:12px;color:transparent;margin-top:3px;visibility:hidden">·</div>
+          <!-- placeholder (상위 카드의 최종 타겟 박스와 동일 높이) -->
+          <div style="visibility:hidden;margin-top:8px;border:1.5px solid transparent;border-radius:8px;padding:8px 10px">
+            <div style="font-size:10.5px;font-weight:800;letter-spacing:.3px;margin-bottom:2px">_</div>
+            <div style="font-size:14.5px;font-weight:900;line-height:1.15">_ <span style="font-size:20px">_</span><small style="font-size:11px">_</small></div>
+          </div>
 
           <div style="height:1px;background:#cbd5e1;margin:12px 0"></div>
 
@@ -241,7 +255,7 @@
 
     <!-- 2) 5월 안내 활동 funnel — 가로 징검다리 -->
     <div class="panel">
-      <h3>② 5월 안내 활동 — Funnel</h3>
+      <h3>② 5월 안내 활동 - 챗봇 <span style="color:#16a34a">신규 340처</span> 유입</h3>
       <p style="font-size:12px;color:#334155;margin:-6px 0 18px;line-height:1.6">
         ※ 대상 고객 1,166처, 고객샘 고객정보에 <b style="color:#b45309">Target 마크 일괄 표기</b>
       </p>
@@ -250,7 +264,7 @@
       <div style="display:flex;align-items:center;gap:0;margin:18px 0;flex-wrap:wrap">
 
         <!-- Stage 1: 안내 대상 -->
-        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#3b82f6,#6366f1);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(59,130,246,.28);text-align:center">
+        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#60a5fa,#818cf8);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(59,130,246,.28);text-align:center">
           <div style="font-size:15px;font-weight:800;opacity:.95;margin-bottom:6px">🎯 안내 대상</div>
           <div style="font-size:30px;font-weight:900;line-height:1.05">1,166<small style="font-size:13px;font-weight:700">처</small></div>
           <div style="font-size:12.5px;font-weight:600;opacity:.95;margin-top:6px">상위 20% 中 챗봇 미사용</div>
@@ -266,7 +280,7 @@
         </div>
 
         <!-- Stage 2: 5월 콜 인입 -->
-        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#f97316,#fbbf24);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(249,115,22,.28);text-align:center">
+        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#fb923c,#fcd34d);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(249,115,22,.28);text-align:center">
           <div style="font-size:15px;font-weight:800;opacity:.95;margin-bottom:6px">📞 5월 콜 인입</div>
           <div style="font-size:30px;font-weight:900;line-height:1.05">857<small style="font-size:13px;font-weight:700">처</small></div>
           <div style="font-size:12.5px;font-weight:600;opacity:.95;margin-top:6px">5월 총 콜 2,505건</div>
@@ -282,7 +296,7 @@
         </div>
 
         <!-- Stage 3: 실제 안내 -->
-        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#9333ea,#d946ef);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(147,51,234,.28);text-align:center">
+        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#a855f7,#e879f9);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(147,51,234,.28);text-align:center">
           <div style="font-size:15px;font-weight:800;opacity:.95;margin-bottom:6px">📢 사용 안내</div>
           <div style="font-size:30px;font-weight:900;line-height:1.05">232<small style="font-size:13px;font-weight:700">처</small></div>
           <div style="font-size:12.5px;font-weight:600;opacity:.95;margin-top:6px">전화/원격 설명</div>
@@ -298,7 +312,7 @@
         </div>
 
         <!-- Stage 4: 챗봇 신규 사용 -->
-        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#059669,#10b981);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 14px rgba(16,185,129,.32);text-align:center;border:2px solid #34d399">
+        <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#10b981,#34d399);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 14px rgba(52,211,153,.32);text-align:center;border:2px solid #34d399">
           <div style="font-size:15px;font-weight:800;opacity:.95;margin-bottom:6px">✅ 챗봇 신규 사용</div>
           <div style="font-size:32px;font-weight:900;line-height:1.05">340<small style="font-size:14px;font-weight:700">처</small></div>
           <div style="font-size:12.5px;font-weight:700;opacity:.95;margin-top:6px">캠페인 효과</div>
@@ -311,12 +325,22 @@
     <!-- 3) 월별 추이 + 6월 예측 — 기관수 + 콜수 두 차트 -->
     <div class="panel">
       <h3>③ 1,166 안내 대상의 월별 추이 + 6월 예측</h3>
-      <div class="legend">
-        <span><span class="sw" style="background:#ef4444"></span>📞 콜만</span>
-        <span><span class="sw" style="background:#f59e0b"></span>📞 콜 + 🤖 챗봇</span>
-        <span><span class="sw" style="background:#10b981"></span>🤖 챗봇만 <small style="color:#334155">(콜 발생 X)</small></span>
-        <span><span class="sw" style="background:#94a3b8"></span>둘 다 없음</span>
-        
+
+      <!-- 색-카테고리 매핑 카드 (가독성 강화) -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(248,113,113,.10);border:1px solid rgba(248,113,113,.35);border-left:4px solid #f87171;border-radius:6px">
+          <span style="font-size:14px;font-weight:700;color:#0f172a">📞 콜 only</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.40);border-left:4px solid #fbbf24;border-radius:6px">
+          <span style="font-size:14px;font-weight:700;color:#0f172a">📞 콜 + 🤖 챗봇</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.40);border-left:4px solid #34d399;border-radius:6px">
+          <span style="font-size:14px;font-weight:700;color:#0f172a">🤖 챗봇 only</span>
+          <small style="color:#475569;font-size:11.5px">(콜 없음)</small>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(148,163,184,.15);border:1px solid rgba(148,163,184,.45);border-left:4px solid #94a3b8;border-radius:6px">
+          <span style="font-size:14px;font-weight:700;color:#0f172a">⬜ 둘 다 없음</span>
+        </div>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
@@ -329,7 +353,7 @@
         </div>
         <!-- 우: 콜수 -->
         <div>
-          <div style="font-size:12.5px;color:#1e293b;font-weight:700;margin-bottom:6px;text-align:center">📞 콜수 (1,166이 발생시킨 콜)</div>
+          <div style="font-size:12.5px;color:#1e293b;font-weight:700;margin-bottom:6px;text-align:center">📞 1,166 고객의 콜 변화</div>
           <div class="chart-wrap" style="height:320px">
             <canvas id="v2MonthlyStackCalls"></canvas>
           </div>
@@ -2006,9 +2030,9 @@ function drawChart() {
     return 'rgba(0,0,0,0)';
   };
   // 26년은 1~3월도 모두 컬러 (콜만 빨강) — 25년/26년 시각적 구분은 그룹 위치(좌/우)로만
-  const callOnlyBg = S.kinds.map((k,i) => tone('rgba(239,68,68,1)', k));
-  const bothBg     = S.kinds.map((k,i) => tone('rgba(245,158,11,1)', k));
-  const chatBg     = S.kinds.map((k,i) => tone('rgba(16,185,129,1)', k));
+  const callOnlyBg = S.kinds.map((k,i) => tone('rgba(248,113,113,1)', k));
+  const bothBg     = S.kinds.map((k,i) => tone('rgba(251,191,36,1)', k));
+  const chatBg     = S.kinds.map((k,i) => tone('rgba(52,211,153,1)', k));
   const grayBg     = S.MONTHS.map(_ => 'rgba(148,163,184,.85)');
 
   // 예측 구간 시작 — 6월 (index 5)
@@ -2166,7 +2190,7 @@ function drawChart() {
           label: '26년 콜만',
           data: S.ds26_callonly,
           backgroundColor: callOnlyBg,
-          borderColor: S.kinds.map(k => k==='fcst' ? 'rgba(239,68,68,.6)' : 'transparent'),
+          borderColor: S.kinds.map(k => k==='fcst' ? 'rgba(248,113,113,.6)' : 'transparent'),
           borderWidth: S.kinds.map(k => k==='fcst' ? 1 : 0),
           stack: 'y26',
           order: 2,
@@ -2175,7 +2199,7 @@ function drawChart() {
           label: '26년 콜 + 챗봇',
           data: S.ds26_both,
           backgroundColor: bothBg,
-          borderColor: S.kinds.map(k => k==='fcst' ? 'rgba(245,158,11,.6)' : 'transparent'),
+          borderColor: S.kinds.map(k => k==='fcst' ? 'rgba(251,191,36,.6)' : 'transparent'),
           borderWidth: S.kinds.map(k => k==='fcst' ? 1 : 0),
           stack: 'y26',
           order: 3,
@@ -2184,7 +2208,7 @@ function drawChart() {
           label: '26년 챗봇만',
           data: S.ds26_chatonly,
           backgroundColor: chatBg,
-          borderColor: S.kinds.map(k => k==='fcst' ? 'rgba(16,185,129,.6)' : 'transparent'),
+          borderColor: S.kinds.map(k => k==='fcst' ? 'rgba(52,211,153,.6)' : 'transparent'),
           borderWidth: S.kinds.map(k => k==='fcst' ? 1 : 0),
           stack: 'y26',
           order: 4,
@@ -2965,7 +2989,7 @@ function drawR2MayChart() {
         {
           label: '📞 1,166 객당 콜', data: callData,
           borderColor: '#ef4444',
-          backgroundColor: 'rgba(239,68,68,.10)',
+          backgroundColor: 'rgba(248,113,113,.10)',
           borderWidth: 2, tension: 0.3,
           pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#ef4444',
           fill: false
@@ -2973,7 +2997,7 @@ function drawR2MayChart() {
         {
           label: '🤖 1,166 객당 챗봇', data: chatData,
           borderColor: '#10b981',
-          backgroundColor: 'rgba(16,185,129,.15)',
+          backgroundColor: 'rgba(52,211,153,.15)',
           borderWidth: 2, tension: 0.3,
           pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#10b981',
           fill: true
@@ -3072,7 +3096,7 @@ function drawR2MonthlyChart() {
         {
           label: '📞 1,166 객당 콜', data: d1166,
           borderColor: '#ef4444',
-          backgroundColor: 'rgba(239,68,68,.10)',
+          backgroundColor: 'rgba(248,113,113,.10)',
           borderWidth: 2, tension: 0.3,
           pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#ef4444',
           fill: false
@@ -3080,7 +3104,7 @@ function drawR2MonthlyChart() {
         {
           label: '🤖 1,166 객당 챗봇', data: d432b,
           borderColor: '#10b981',
-          backgroundColor: 'rgba(16,185,129,.15)',
+          backgroundColor: 'rgba(52,211,153,.15)',
           borderWidth: 2, tension: 0.3,
           pointRadius: 2.5, pointHoverRadius: 5, pointBackgroundColor: '#10b981',
           fill: true
@@ -3134,7 +3158,7 @@ function drawV2Donut() {
   const ctx = document.getElementById('v2DonutChart');
   if (!ctx) return;
   // 카드 색과 동일한 매칭
-  const COLORS = ['#ef4444', '#94a3b8', '#475569'];
+  const COLORS = ['#f87171', '#94a3b8', '#64748b'];
 
   new Chart(ctx.getContext('2d'), {
     type: 'doughnut',
@@ -3189,7 +3213,7 @@ function drawV2MonthlyStack() {
     id: 'segConnect',
     afterDatasetsDraw(c) {
       const ctxc = c.ctx;
-      const baseColors = ['rgba(239,68,68,1)', 'rgba(245,158,11,1)', 'rgba(16,185,129,1)', 'rgba(71,85,105,1)'];
+      const baseColors = ['rgba(248,113,113,1)', 'rgba(251,191,36,1)', 'rgba(52,211,153,1)', 'rgba(148,163,184,1)'];
       c.data.datasets.forEach((ds, dsIdx) => {
         const meta = c.getDatasetMeta(dsIdx);
         const baseColor = baseColors[dsIdx] || '#fff';
@@ -3262,25 +3286,25 @@ function drawV2MonthlyStack() {
         {
           label: '📞 콜만',
           data: mkData('call_only'),
-          backgroundColor: colorFn('rgba(239,68,68,1)'),
+          backgroundColor: colorFn('rgba(248,113,113,1)'),
           stack: 's',
         },
         {
           label: '📞 콜 + 🤖 챗봇',
           data: mkData('both'),
-          backgroundColor: colorFn('rgba(245,158,11,1)'),
+          backgroundColor: colorFn('rgba(251,191,36,1)'),
           stack: 's',
         },
         {
           label: '🤖 챗봇만',
           data: mkData('chat_only'),
-          backgroundColor: colorFn('rgba(16,185,129,1)'),
+          backgroundColor: colorFn('rgba(52,211,153,1)'),
           stack: 's',
         },
         {
           label: '둘 다 없음',
           data: mkData('none'),
-          backgroundColor: colorFn('rgba(71,85,105,1)'),
+          backgroundColor: colorFn('rgba(148,163,184,1)'),
           stack: 's',
         }
       ]
@@ -3342,7 +3366,32 @@ function drawV2MonthlyStackCalls() {
     id: 'segCalls',
     afterDatasetsDraw(c) {
       const ctxc = c.ctx;
-      const baseColors = ['rgba(239,68,68,1)', 'rgba(245,158,11,1)', 'rgba(16,185,129,1)', 'rgba(71,85,105,1)'];
+      const baseColors = ['rgba(248,113,113,1)', 'rgba(251,191,36,1)', 'rgba(52,211,153,1)', 'rgba(148,163,184,1)'];
+
+      // 막대 상단 총합 콜수 라벨
+      const nLabels = c.data.labels.length;
+      for (let i = 0; i < nLabels; i++) {
+        let total = 0;
+        c.data.datasets.forEach(ds => { total += ds.data[i] || 0; });
+        if (total <= 0) continue;
+        // 가장 위에 위치한 dataset (값 > 0) 의 bar.y
+        let topBar = null;
+        for (let dsIdx = c.data.datasets.length - 1; dsIdx >= 0; dsIdx--) {
+          if ((c.data.datasets[dsIdx].data[i] || 0) > 0) {
+            topBar = c.getDatasetMeta(dsIdx).data[i];
+            break;
+          }
+        }
+        if (!topBar) continue;
+        ctxc.save();
+        ctxc.fillStyle = '#0f172a';
+        ctxc.font = 'bold 13px sans-serif';
+        ctxc.textAlign = 'center';
+        ctxc.textBaseline = 'bottom';
+        ctxc.fillText(`${total.toLocaleString()}콜`, topBar.x, topBar.y - 6);
+        ctxc.restore();
+      }
+
       c.data.datasets.forEach((ds, dsIdx) => {
         const meta = c.getDatasetMeta(dsIdx);
         const baseColor = baseColors[dsIdx] || '#fff';
@@ -3411,8 +3460,8 @@ function drawV2MonthlyStackCalls() {
     data: {
       labels: labels,
       datasets: [
-        { label: '📞 콜만', data: mkData('call_only'), backgroundColor: colorFn('rgba(239,68,68,1)'), stack: 's' },
-        { label: '📞 콜+챗', data: mkData('both'), backgroundColor: colorFn('rgba(245,158,11,1)'), stack: 's' },
+        { label: '📞 콜만', data: mkData('call_only'), backgroundColor: colorFn('rgba(248,113,113,1)'), stack: 's' },
+        { label: '📞 콜+챗', data: mkData('both'), backgroundColor: colorFn('rgba(251,191,36,1)'), stack: 's' },
       ]
     },
     options: {
