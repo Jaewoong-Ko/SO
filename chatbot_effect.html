@@ -93,7 +93,7 @@
 <body>
 <div class="wrap">
 
-  <h1>챗봇 사용 활성화 현황 <span class="badge">D-1 = <span id="dvDate">2026-05-28</span></span></h1>
+  <h1>챗봇 사용 활성화 현황 <span class="badge">D-1 = <span id="dvDate">2026-05-29</span></span></h1>
 
   <!-- 탭 UI — v2 만 남김 (다른 탭 제거) -->
   <div class="tabs" style="display:none">
@@ -127,8 +127,8 @@
         <!-- 결과 -->
         <div style="text-align:center;border-left:1px solid #cbd5e1;padding:0 6px">
           <div style="font-size:14px;color:#1e293b;font-weight:800;margin-bottom:6px;letter-spacing:.2px">📉 결과</div>
-          <div style="font-size:24px;font-weight:900;color:#dc2626;line-height:1.05">2,383건 콜 ↓</div>
-          <div style="font-size:11.5px;color:#475569;margin-top:5px;line-height:1.4">4,888 → 2,505 <b style="color:#dc2626">(−49%)</b></div>
+          <div style="font-size:24px;font-weight:900;color:#dc2626;line-height:1.05">2,326건 콜 ↓</div>
+          <div style="font-size:11.5px;color:#475569;margin-top:5px;line-height:1.4">4,888 → 2,562 <b style="color:#dc2626">(−48%)</b></div>
         </div>
 
         <!-- 예정 -->
@@ -273,7 +273,7 @@
         <!-- 가운데 화살표 박스 1 -->
         <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 8px">
           <div style="background:#fff;border:1.5px solid #cbd5e1;border-radius:18px;padding:5px 12px;font-size:11.5px;color:#334155;font-weight:700;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.06)">
-            <b style="color:#dc2626">−309처</b><br>
+            <b style="color:#dc2626">−302처</b><br>
             <small style="font-weight:600;color:#64748b">콜 미인입</small>
           </div>
           <div style="font-size:18px;color:#94a3b8;margin-top:2px">→</div>
@@ -282,15 +282,15 @@
         <!-- Stage 2: 5월 콜 인입 -->
         <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#fb923c,#fcd34d);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(249,115,22,.28);text-align:center">
           <div style="font-size:15px;font-weight:800;opacity:.95;margin-bottom:6px">📞 5월 콜 인입</div>
-          <div style="font-size:30px;font-weight:900;line-height:1.05">857<small style="font-size:13px;font-weight:700">처</small></div>
-          <div style="font-size:12.5px;font-weight:600;opacity:.95;margin-top:6px">5월 총 콜 2,505건</div>
+          <div style="font-size:30px;font-weight:900;line-height:1.05">864<small style="font-size:13px;font-weight:700">처</small></div>
+          <div style="font-size:12.5px;font-weight:600;opacity:.95;margin-top:6px">5월 총 콜 2,562건</div>
         </div>
 
         <!-- 가운데 화살표 박스 2 -->
         <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 8px">
           <div style="background:#fff;border:1.5px solid #cbd5e1;border-radius:18px;padding:5px 12px;font-size:11.5px;color:#334155;font-weight:700;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.06)">
-            <b style="color:#9333ea">232처 안내</b><br>
-            <small style="font-weight:600;color:#64748b">콜 인입 中 27.1%</small>
+            <b style="color:#9333ea">235처 안내</b><br>
+            <small style="font-weight:600;color:#64748b">콜 인입 中 27.2%</small>
           </div>
           <div style="font-size:18px;color:#94a3b8;margin-top:2px">→</div>
         </div>
@@ -298,7 +298,7 @@
         <!-- Stage 3: 실제 안내 -->
         <div style="flex:1;min-width:160px;background:linear-gradient(135deg,#a855f7,#e879f9);border-radius:12px;padding:18px 16px;color:#fff;box-shadow:0 3px 12px rgba(147,51,234,.28);text-align:center">
           <div style="font-size:15px;font-weight:800;opacity:.95;margin-bottom:6px">📢 사용 안내</div>
-          <div style="font-size:30px;font-weight:900;line-height:1.05">232<small style="font-size:13px;font-weight:700">처</small></div>
+          <div style="font-size:30px;font-weight:900;line-height:1.05">235<small style="font-size:13px;font-weight:700">처</small></div>
           <div style="font-size:12.5px;font-weight:600;opacity:.95;margin-top:6px">전화/원격 설명</div>
         </div>
 
@@ -2372,7 +2372,7 @@ function drawAnswerRate() {
 
 // ── V2 분포 분석 데이터 (inline) ──
 const V2_DATA = {
-  "generated_at": "2026-05-29 15:52",
+  "generated_at": "2026-06-01 11:45",
   "distribution_14": {
     "top20": {
       "count": 2567,
@@ -2405,16 +2405,16 @@ const V2_DATA = {
       "none": 5
     },
     "2026-05": {
-      "call_only": 545,
-      "both": 312,
-      "chat_only": 28,
-      "none": 281
+      "call_only": 538,
+      "both": 326,
+      "chat_only": 31,
+      "none": 271
     },
     "2026-06_predict": {
-      "call_only": 423,
-      "both": 485,
-      "chat_only": 61,
-      "none": 197
+      "call_only": 417,
+      "both": 496,
+      "chat_only": 63,
+      "none": 190
     }
   },
   "monthly_1166_calls": {
@@ -2425,23 +2425,23 @@ const V2_DATA = {
       "none": 0
     },
     "2026-05": {
-      "call_only": 1376,
-      "both": 1129,
+      "call_only": 1372,
+      "both": 1190,
       "chat_only": 0,
       "none": 0
     },
     "2026-06_predict": {
-      "call_only": 908,
-      "both": 1492,
+      "call_only": 904,
+      "both": 1539,
       "chat_only": 0,
       "none": 0
     }
   },
   "funnel_may": {
     "target": 1166,
-    "called_in_may": 857,
+    "called_in_may": 864,
     "converted_campaign": 340,
-    "converted_total": 471
+    "converted_total": 488
   }
 };
 
