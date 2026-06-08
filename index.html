@@ -772,11 +772,11 @@ window.INSIGHT_UPDATED = "2026-06-05";
           <!-- 전년 비교 테이블 -->
           <div class="cm-tbl-box">
             <h3>대리점별 이탈 현황 — 전년 비교</h3>
-            <div class="cm-note">* <span style="color:#dc2626;font-weight:600">2026 누적</span>: 1~4월 실제 이탈 &nbsp;|&nbsp; <span style="color:#7c3aed;font-weight:600">2026 연환산</span>: 누적×3 예상치 &nbsp;|&nbsp; <span style="font-weight:600">2025 연간</span>: 전년도 연간 합계(비교 참고용)</div>
+            <div class="cm-note">* <span style="color:#dc2626;font-weight:600">2026 누적</span>: <span class="churn-progress-label">1~4월</span> 실제 이탈 &nbsp;|&nbsp; <span style="color:#7c3aed;font-weight:600">2026 연환산</span>: <span class="churn-ann-label">누적×3 예상치</span> &nbsp;|&nbsp; <span style="font-weight:600">2025 연간</span>: 전년도 연간 합계(비교 참고용)</div>
             <table class="cm-table">
               <thead><tr>
                 <th style="width:28px">#</th><th style="text-align:left;min-width:140px">대리점</th>
-                <th>폐업/SW</th><th style="color:#dc2626">2026 누적<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">1~4월</span></th><th style="color:#7c3aed">2026 연환산<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">누적×3 예상</span></th><th>2025 연간<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">전체(참고)</span></th><th>증감<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">연환산 기준</span></th>
+                <th>폐업/SW</th><th style="color:#dc2626">2026 누적<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8" class="churn-progress-label">1~4월</span></th><th style="color:#7c3aed">2026 연환산<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8" class="churn-ann-label">누적×3 예상</span></th><th>2025 연간<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">전체(참고)</span></th><th>증감<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">연환산 기준</span></th>
               </tr></thead>
               <tbody id="cmOverviewTbody"></tbody>
             </table>
@@ -1005,11 +1005,11 @@ window.INSIGHT_UPDATED = "2026-06-05";
         <!-- 전년 비교 테이블 -->
         <div class="cm-tbl-box">
           <h3>대리점별 이탈 현황 — 전년 비교</h3>
-          <div class="cm-note">* <span style="color:#dc2626;font-weight:600">2026 누적</span>: 1~4월 실제 이탈 &nbsp;|&nbsp; <span style="color:#7c3aed;font-weight:600">2026 연환산</span>: 누적×3 예상치 &nbsp;|&nbsp; <span style="font-weight:600">2025 연간</span>: 전년도 연간 합계(비교 참고용)</div>
+          <div class="cm-note">* <span style="color:#dc2626;font-weight:600">2026 누적</span>: <span class="churn-progress-label">1~4월</span> 실제 이탈 &nbsp;|&nbsp; <span style="color:#7c3aed;font-weight:600">2026 연환산</span>: <span class="churn-ann-label">누적×3 예상치</span> &nbsp;|&nbsp; <span style="font-weight:600">2025 연간</span>: 전년도 연간 합계(비교 참고용)</div>
           <table class="cm-table">
             <thead><tr>
               <th style="width:28px">#</th><th style="text-align:left;min-width:140px">대리점</th>
-              <th>폐업/SW</th><th style="color:#dc2626">2026 누적<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">1~4월</span></th><th style="color:#7c3aed">2026 연환산<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">누적×3 예상</span></th><th>2025 연간<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">전체(참고)</span></th><th>증감<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">연환산 기준</span></th>
+              <th>폐업/SW</th><th style="color:#dc2626">2026 누적<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8" class="churn-progress-label">1~4월</span></th><th style="color:#7c3aed">2026 연환산<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8" class="churn-ann-label">누적×3 예상</span></th><th>2025 연간<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">전체(참고)</span></th><th>증감<br><span style="font-weight:400;font-size:8.5px;color:#94a3b8">연환산 기준</span></th>
             </tr></thead>
             <tbody id="cmTbody"></tbody>
           </table>
@@ -1103,6 +1103,36 @@ const INLINE_CHURN = {"lastUpdated":"2026-06-04","generatedAt":"2026-06-08 09:00
 // ════════════════════════════════════════════
 let DATA = null;
 let CHURN_DATA = null;
+/*CHURN_DYNAMIC_v1*/ const CHURN_PROG = (() => {
+  let asof = new Date();
+  try {
+    if (typeof CHURN_DATA !== 'undefined' && CHURN_DATA && CHURN_DATA.lastUpdated) {
+      asof = new Date(CHURN_DATA.lastUpdated + 'T00:00:00');
+    } else if (typeof INLINE_CHURN !== 'undefined' && INLINE_CHURN && INLINE_CHURN.lastUpdated) {
+      asof = new Date(INLINE_CHURN.lastUpdated + 'T00:00:00');
+    }
+  } catch(e) {}
+  const ny = asof.getFullYear(), nm = asof.getMonth()+1, nd = asof.getDate();
+  const jan1 = new Date(ny, 0, 1);
+  const elapsed = Math.max(1, Math.floor((asof - jan1) / 86400000) + 1);
+  const annFactor = 365 / elapsed;
+  const inProgress = nd < 28;
+  return {
+    asof, year: ny, month: nm, day: nd, elapsed, annFactor, inProgress,
+    progLabel: inProgress ? `1~${nm}월 (진행 중)` : `1~${nm}월`,
+    annLabel: `누적 × ${annFactor.toFixed(2)} 추정`,
+  };
+})();
+// header label 자동 갱신
+(function(){
+  function refresh(){
+    document.querySelectorAll('.churn-progress-label').forEach(el => { el.textContent = CHURN_PROG.progLabel; });
+    document.querySelectorAll('.churn-ann-label').forEach(el => { el.textContent = CHURN_PROG.annLabel; });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refresh);
+  else refresh();
+})();
+
 let dayFilter = 'weekday';
 let selectedAgent = 0;
 let charts = {};
@@ -2962,7 +2992,7 @@ function renderAgencyMapAndTable(dotsId, labelsId, tipId, tbodyId, ag26, ag25) {
   let sumBub26 = sorted26.reduce((s,[,i])=>s+(i['폐업']||0),0);
   let sumSw26  = sorted26.reduce((s,[,i])=>s+(i['SW변경']||0),0);
   let sumTot26 = sorted26.reduce((s,[,i])=>s+(i['계']||0),0);
-  let sumAnn26 = sumTot26 * 3;
+  let sumAnn26 = Math.round(sumTot26 * CHURN_PROG.annFactor);
   let sumAnn25 = Object.values(ag25).reduce((s,i)=>s+(i['계']||0),0);
   let sumDiff  = sumAnn25 ? sumAnn26 - sumAnn25 : null;
   let sumPct   = sumAnn25 ? ((sumAnn26-sumAnn25)/sumAnn25*100).toFixed(0) : null;
@@ -2979,7 +3009,7 @@ function renderAgencyMapAndTable(dotsId, labelsId, tipId, tbodyId, ag26, ag25) {
       sumTot26 = (_full26["계"]||0);
       sumBub26 = (_full26["폐업"]||0);
       sumSw26  = (_full26["SW변경"]||0);
-      sumAnn26 = sumTot26 * 3;
+      sumAnn26 = Math.round(sumTot26 * CHURN_PROG.annFactor);
       if (_full25) { sumAnn25 = (_full25["계"]||0); }
       sumDiff  = sumAnn25 ? sumAnn26 - sumAnn25 : null;
       sumPct   = sumAnn25 ? ((sumAnn26-sumAnn25)/sumAnn25*100).toFixed(0) : null;
@@ -2990,7 +3020,7 @@ function renderAgencyMapAndTable(dotsId, labelsId, tipId, tbodyId, ag26, ag25) {
     const total26 = info26['계'] || 0;
     const bub26   = info26['폐업'] || 0;
     const sw26    = info26['SW변경'] || 0;
-    const ann26   = total26 * 3;
+    const ann26   = Math.round(total26 * CHURN_PROG.annFactor);
 
     const info25  = ag25[name] || {};
     const ann25   = info25['계'] || 0;
@@ -3040,7 +3070,7 @@ function renderAgencyMapAndTable(dotsId, labelsId, tipId, tbodyId, ag26, ag25) {
       (_o.sw > 0 ? (_o.bub>0?'&nbsp;':'')+'<span style="color:#3b82f6;font-size:10px">SW '+_o.sw+'</span>' : '') +
       '</td>'+
       '<td style="text-align:center;color:#dc2626;font-weight:600">'+_o.tot+'</td>'+
-      '<td style="text-align:center;color:#7c3aed">'+(_o.tot*3)+'</td>'+
+      '<td style="text-align:center;color:#7c3aed">'+Math.round(_o.tot*CHURN_PROG.annFactor)+'</td>'+
       '<td style="text-align:center;color:#94a3b8">—</td>'+
       '<td style="text-align:center;color:#94a3b8">—</td>'+
     '</tr>');
