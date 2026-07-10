@@ -5989,5 +5989,29 @@ document.addEventListener("DOMContentLoaded", function(){
   try { if (window.renderSeasonCalendar) window.renderSeasonCalendar(); } catch(e){ console.warn("season render", e); }
 });
 </script>
+<!--VACATION_NOTICE_v1_BEGIN-->
+<div id="vacationNotice" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:99999;align-items:center;justify-content:center;font-family:'Malgun Gothic','맑은 고딕',-apple-system,sans-serif">
+  <div style="background:#fff;border-radius:14px;padding:30px 36px;max-width:460px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.35);border-top:6px solid #dc2626">
+    <div style="font-size:44px;text-align:center;margin-bottom:12px">🏖️</div>
+    <div style="font-size:19px;font-weight:800;color:#1a3a5c;text-align:center;margin-bottom:10px;letter-spacing:-.3px">담당자 휴가 (7/13~16)</div>
+    <div style="font-size:13px;color:#64748b;text-align:center;line-height:1.65;margin-bottom:22px">* 서비스내용 자료가 없어 일부 내용이 보이지 않을 수 있습니다.</div>
+    <button onclick="document.getElementById('vacationNotice').style.display='none';try{sessionStorage.setItem('vacationNoticeShown','1');}catch(e){}" style="width:100%;padding:11px;background:linear-gradient(135deg,#1a3a5c 0%,#3b82f6 100%);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.3px">확인</button>
+  </div>
+</div>
+<script>
+(function(){
+  try {
+    var today = new Date();
+    var start = new Date('2026-07-13T00:00:00');
+    var end   = new Date('2026-07-16T23:59:59');
+    if (today < start || today > end) return;
+    if (sessionStorage.getItem('vacationNoticeShown') === '1') return;
+    var el = document.getElementById('vacationNotice');
+    if (!el) return;
+    el.style.display = 'flex';
+  } catch(e) { console.warn('vacation notice', e); }
+})();
+</script>
+<!--VACATION_NOTICE_v1_END-->
 </body>
 </html>
