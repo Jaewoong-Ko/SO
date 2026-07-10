@@ -1545,6 +1545,7 @@ function renderLsModule() {
   const data26 = D.y2026.map(w => w.total);
   const showAvg = document.getElementById('lsShowAvg') ? document.getElementById('lsShowAvg').checked : true;
   const showBg = document.getElementById('lsShowBg') ? document.getElementById('lsShowBg').checked : true;
+  window.charts = window.charts || {};
   // 라인 차트
   if (window.charts.lsLine) window.charts.lsLine.destroy();
   const lineDs = [];
