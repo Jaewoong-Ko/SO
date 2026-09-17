@@ -1849,7 +1849,7 @@ function soGateCheck(){
     <div id="ccCardsTab" style="margin-bottom:14px"></div>
     <div class="chart-card" style="margin-bottom:12px"><h3 style="margin:0 0 8px;font-size:14px;color:#1a3a5c">📈 고객수 추이</h3>
       <div style="height:190px;position:relative"><canvas id="ccChartTotal"></canvas></div></div>
-    <div class="chart-card" style="margin-bottom:12px"><h3 style="margin:0 0 8px;font-size:14px;color:#1a3a5c">📉 순증감 추이 (신규 − 감소) <span style="font-size:11px;font-weight:400;color:#94a3b8">(0 위 = 늘어난 구간 · 0 아래 = 줄어든 구간)</span></h3>
+    <div class="chart-card" style="margin-bottom:12px"><h3 style="margin:0 0 8px;font-size:14px;color:#1a3a5c">📊 월별 순증감 (신규 − 감소) <span style="font-size:11px;font-weight:400;color:#94a3b8">(전월 말 → 이번 월 말 · 막대 클릭 → 해당 월 명단)</span></h3>
       <div style="height:230px;position:relative"><canvas id="ccChartFlow"></canvas></div>
       <div id="ccFlowNote" style="font-size:11.5px;color:#64748b;margin-top:6px"></div></div>
     <div id="ccModal" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:9000" onclick="if(event.target===this)ccCloseModal()">
@@ -1869,6 +1869,7 @@ function soGateCheck(){
       <div id="ccRawTable"></div></div>
   </div>
 <!--CUST_COUNT_PANEL_END_v1-->
+
 
 
 
@@ -8220,52 +8221,61 @@ document.addEventListener('keydown', function(e){
 
     var sLabels = d.series.map(function(s){ return s.date; });
     mkLine('ccChartTotal', sLabels, d.series.map(function(s){ return seriesVal(s, ag); }), '#0d9488', 'rgba(13,148,136,.10)');
-    // 순증감 추이 (신규 − 감소) — 0 기준선 위아래로 증감 표현, 월말 고정 x축
+    // 월별 순증감 — 구간 길이에 좌우되던 선그래프를 월 단위 막대로 교체 (2026-09-17)
     var newVals = d.diffs.map(function(df){ return diffNew(df, ag); });
     var lostVals = d.diffs.map(function(df){ return diffLost(df, ag); });
     var cv = document.getElementById('ccChartFlow');
     if (cv && window.Chart){
       window.charts = window.charts || {};
       if (window.charts.ccFlow) window.charts.ccFlow.destroy();
-      var f0 = d.diffs.length ? d.diffs[0].from : d.series[0].date;
-      var fEnd = d.diffs.length ? d.diffs[d.diffs.length-1].to : d.series[d.series.length-1].date;
-      var fN = ccDayOff(f0, fEnd) || 1;
-      var netPts = d.diffs.map(function(df, i){
-        var net = newVals[i] - lostVals[i];
-        return { x: ccDayOff(f0, df.to), y: net,
-                 d: df.from.slice(5).replace('-','/')+'→'+df.to.slice(5).replace('-','/'),
-                 nw: newVals[i], ls: lostVals[i] };
+      var mAgg = ccMonthlyAgg(d, ag).filter(function(m){ return m.net != null; });
+      window.ccMAgg = mAgg;
+      var mLabels = mAgg.map(function(m){
+        return Number(m.ym.slice(5)) + '월' + (m.ongoing ? ' *' : '');
       });
+      var mNet = mAgg.map(function(m){ return m.net; });
+      function barCol(m, alpha){
+        var pos = m.net >= 0;
+        var a = m.ongoing ? alpha * 0.55 : alpha;
+        return pos ? 'rgba(22,163,74,' + a + ')' : 'rgba(220,38,38,' + a + ')';
+      }
       window.charts.ccFlow = new Chart(cv.getContext('2d'), {
-        type: 'line',
-        data: { datasets: [
-          { label: '구간 순증감 (신규 − 감소)', data: netPts, borderColor: '#475569',
-            fill: { target: { value: 0 }, above: 'rgba(22,163,74,.14)', below: 'rgba(220,38,38,.14)' },
-            tension: .25, borderWidth: 2.4,
-            pointRadius: 3, pointHoverRadius: 6,
-            pointBackgroundColor: netPts.map(function(p){ return p.y >= 0 ? '#16a34a' : '#dc2626'; }),
-            pointBorderColor: netPts.map(function(p){ return p.y >= 0 ? '#16a34a' : '#dc2626'; }) }
+        type: 'bar',
+        data: { labels: mLabels, datasets: [
+          { label: '월 순증감 (신규 − 감소)', data: mNet,
+            backgroundColor: mAgg.map(function(m){ return barCol(m, .78); }),
+            borderColor: mAgg.map(function(m){ return barCol(m, 1); }),
+            borderWidth: 1.2, borderRadius: 4, maxBarThickness: 54 }
         ]},
         options: { responsive: true, maintainAspectRatio: false,
+          onClick: function(evt, els){
+            if (!els.length) return;
+            var m = window.ccMAgg[els[0].index]; if (!m || m.prevIdx == null) return;
+            var label = m.ym.slice(0,4) + '년 ' + Number(m.ym.slice(5)) + '월';
+            ccShowListRange(m.net >= 0 ? 'new' : 'lost', selAg(), m.prevIdx, m.curIdx, label);
+          },
+          onHover: function(e, els){ e.native.target.style.cursor = els.length ? 'pointer' : 'default'; },
           plugins: { legend: { position: 'top', labels: { font: { size: 11.5 }, boxWidth: 13 } },
             tooltip: { callbacks: {
-              title: function(ctx){ return ctx[0].raw.d; },
+              title: function(ctx){
+                var m = mAgg[ctx[0].dataIndex];
+                return m.ym.slice(0,4) + '년 ' + Number(m.ym.slice(5)) + '월' + (m.ongoing ? ' (진행 중)' : '');
+              },
               label: function(c){
-                var p = c.raw;
-                return '순증감 ' + (p.y>0?'+':'') + p.y.toLocaleString() + '처 (신규 ' + p.nw.toLocaleString() + ' · 감소 ' + p.ls.toLocaleString() + ')';
+                var m = mAgg[c.dataIndex];
+                return '순증감 ' + (m.net>0?'+':'') + m.net.toLocaleString() + '처';
+              },
+              afterLabel: function(c){
+                var m = mAgg[c.dataIndex];
+                return ['신규 +' + m.nNew.toLocaleString() + '처 · 감소 −' + m.nLost.toLocaleString() + '처',
+                        m.span + ' 스냅샷', '클릭 → 명단 보기'];
               }
             } } },
           scales: { y: { ticks: { font: { size: 10 }, precision: 0,
               callback: function(v){ return (v>0?'+':'') + Number(v).toLocaleString(); } },
               grid: { color: function(ctx){ return ctx.tick && ctx.tick.value === 0 ? '#64748b' : '#f1f5f9'; },
                       lineWidth: function(ctx){ return ctx.tick && ctx.tick.value === 0 ? 1.6 : 1; } } },
-            x: { type: 'linear', min: 0, max: fN,
-              afterBuildTicks: function(axis){
-                axis.ticks = ccMonthEndTicks(f0, fEnd).map(function(v){ return { value: v }; });
-              },
-              ticks: { font: { size: 10 }, autoSkip: false,
-                callback: function(v){ return ccOffToDate(f0, v); } },
-              grid: { display: false } } } }
+            x: { ticks: { font: { size: 11 }, autoSkip: false }, grid: { display: false } } } }
       });
     }
     var note = document.getElementById('ccFlowNote');
@@ -8277,7 +8287,8 @@ document.addEventListener('keydown', function(e){
       var ratio = tl ? (tn / tl).toFixed(2) : '—';
       note.innerHTML = '전 기간 누적 신규 <b>' + tn.toLocaleString() + '</b>처 · 감소 <b>' + tl.toLocaleString() +
         '</b>처 → 순증감 <b>' + (net>0?'+':'') + net.toLocaleString() + '</b>처 · ' + faster +
-        ' <span style="color:#94a3b8">(신규/감소 배율 ' + ratio + ')</span>';
+        ' <span style="color:#94a3b8">(신규/감소 배율 ' + ratio + ')</span>' +
+        '<div style="font-size:10.5px;color:#94a3b8;margin-top:4px">각 월의 <b>마지막 스냅샷(월말)</b> 기준 · <b>*</b> 표시 = 진행 중인 월(잠정) · 막대를 누르면 해당 월 명단이 열립니다</div>';
     }
 
     renderAgencyTable(d);
@@ -8455,32 +8466,43 @@ document.addEventListener('keydown', function(e){
   };
 
   // ── 월별 고객수 증감 표 (각 월 마지막 스냅샷 = 월말 기준 · 스냅샷 없는 월은 생략) ──
+  // 월말 스냅샷 기준 월별 집계 — 차트와 표가 같은 값을 쓰도록 한 곳에서 계산
+  function ccMonthlyAgg(d, ag){
+    var lastByYm = {};
+    d.series.forEach(function(s, i){ lastByYm[s.date.slice(0, 7)] = i; });
+    var idxs = Object.keys(lastByYm).sort().map(function(ym){ return { ym: ym, idx: lastByYm[ym] }; });
+    var curYm = d.series[d.series.length - 1].date.slice(0, 7);
+    return idxs.map(function(cur, k){
+      var prev = k > 0 ? idxs[k-1] : null;
+      var v = seriesVal(d.series[cur.idx], ag);
+      var o = { ym: cur.ym, curIdx: cur.idx, prevIdx: prev ? prev.idx : null,
+                val: v, net: null, nNew: null, nLost: null,
+                ongoing: cur.ym === curYm,
+                snap: d.series[cur.idx].date,
+                span: prev ? d.series[prev.idx].date.slice(5).replace('-','/') + ' → ' + d.series[cur.idx].date.slice(5).replace('-','/') : '기준 시작' };
+      if (prev){
+        o.net = v - seriesVal(d.series[prev.idx], ag);
+        o.nNew = 0; o.nLost = 0;
+        for (var j = prev.idx; j < cur.idx; j++){
+          if (d.diffs[j]){ o.nNew += diffNew(d.diffs[j], ag); o.nLost += diffLost(d.diffs[j], ag); }
+        }
+      }
+      return o;
+    });
+  }
+
   function renderMonthlyTable(d){
     var el = document.getElementById('ccMonthlyTable');
     if (!el) return;
     var ag = selAg();
-    // 각 월의 마지막 스냅샷 인덱스 (월말 기준)
-    var lastByYm = {};
-    d.series.forEach(function(s, i){ lastByYm[s.date.slice(0, 7)] = i; });
-    var firstIdx = Object.keys(lastByYm).sort().map(function(ym){ return { ym: ym, idx: lastByYm[ym] }; });
-    var curYm = d.series[d.series.length - 1].date.slice(0, 7);
+    var agg = ccMonthlyAgg(d, ag);
     var rows = '';
-    for (var k = firstIdx.length - 1; k >= 0; k--){
-      var cur = firstIdx[k], prev = k > 0 ? firstIdx[k-1] : null;
-      var v = seriesVal(d.series[cur.idx], ag);
-      var net = null, nNew = null, nLost = null;
-      if (prev){
-        net = v - seriesVal(d.series[prev.idx], ag);
-        nNew = 0; nLost = 0;
-        for (var j = prev.idx; j < cur.idx; j++){   // diffs[j] = series[j] → series[j+1]
-          if (d.diffs[j]){ nNew += diffNew(d.diffs[j], ag); nLost += diffLost(d.diffs[j], ag); }
-        }
-      }
+    for (var k = agg.length - 1; k >= 0; k--){
+      var cur = { ym: agg[k].ym, idx: agg[k].curIdx }, prev = agg[k].prevIdx == null ? null : { idx: agg[k].prevIdx };
+      var v = agg[k].val, net = agg[k].net, nNew = agg[k].nNew, nLost = agg[k].nLost;
       var ymText = cur.ym.slice(0,4) + '년 ' + Number(cur.ym.slice(5)) + '월';   // onclick 인자용 (순수 텍스트)
-      var ymLbl = ymText + (cur.ym === curYm ? ' <span style="font-size:9.5px;background:#dcfce7;color:#15803d;border-radius:6px;padding:1px 6px;font-weight:700;vertical-align:1px">진행 중</span>' : '');
-      var spanTxt = prev
-        ? d.series[prev.idx].date.slice(5).replace('-','/') + ' → ' + d.series[cur.idx].date.slice(5).replace('-','/')
-        : '기준 시작';
+      var ymLbl = ymText + (agg[k].ongoing ? ' <span style="font-size:9.5px;background:#dcfce7;color:#15803d;border-radius:6px;padding:1px 6px;font-weight:700;vertical-align:1px">진행 중</span>' : '');
+      var spanTxt = agg[k].span;
       var agArg = "'" + ag.replace(/'/g, "\\'") + "'";
       var newCell = nNew == null ? '—'
         : '<span onclick="ccShowListRange(\'new\',' + agArg + ',' + prev.idx + ',' + cur.idx + ',\'' + ymText + '\')" style="cursor:pointer;color:#15803d;font-weight:800;text-decoration:underline;text-underline-offset:3px" title="클릭 → 신규 명단">' + fmt(nNew) + '</span>';
@@ -8509,6 +8531,7 @@ document.addEventListener('keydown', function(e){
 })();
 </script>
 <!--CUST_COUNT_JS_END_v1-->
+
 
 
 
