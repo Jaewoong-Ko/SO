@@ -5764,6 +5764,17 @@ window.chatCountOf = function(name){
   }
   return n;
 };
+// 채팅 운영일수 (total>0 인 날, 기간 모드 반영) — 채팅조 일평균 분모
+window.chatDays = function(){
+  var D = window.CHAT_STATUS_DATA; if (!D) return 0;
+  var past = (window.agentPeriod === 'past'), n = 0;
+  for (var d in D){
+    if (past && d.slice(0,7) > TEAM_PAST_END) continue;
+    if (D[d] && D[d].total > 0) n++;
+  }
+  return n;
+};
+/*TEAM_REORG_v1_END*/
 
 // ════════════════════════════════════════════
 // DAILY TABLE
@@ -6182,7 +6193,7 @@ function renderAgent() {
 
   // 조별 기여도 계산 (KPI 순위용)
   const teamRanks = TEAMS.map(team => {
-    const allM = [...team.members, ...(team.former||[]), ...(team.transfer||[])];
+    const allM = [...team.members, ...((window.agentPeriod === 'past') ? (team.former||[]) : []), ...(team.transfer||[])];
     const ms   = allM.map(n => statsMap[n]).filter(Boolean);
     const effN = effectiveHeadcount(allM, team.name) || 1;
     const tIC  = ms.reduce((s,a)=>s+(a.icForTeam?.[team.name]??a.ic),0);
@@ -6244,8 +6255,31 @@ function renderAgent() {
   `;
 
   // ── 조별 카드 ─────────────────────────────────────────────
+  function _formerBlock(){
+    if (window.agentPeriod === 'past') return '';
+    var names = [];
+    TEAMS.forEach(function(t){ (t.former||[]).forEach(function(n){ if (names.indexOf(n) < 0) names.push(n); }); });
+    if (!names.length) return '';
+    var th = function(lbl, right){ return '<th style="text-align:' + (right?'right':'left') + ';padding:4px 6px;font-size:10px;color:#94a3b8;font-weight:600">' + lbl + '</th>'; };
+    var td = function(v){ return '<td style="text-align:right;padding:5px 6px;color:#94a3b8">' + v + '</td>'; };
+    var rows = names.map(function(n){
+      var a = statsMap[n] || emptyStats(n);
+      var has = a.idx >= 0;
+      var tag = (n === '서유리') ? ' <span style="font-size:9px;background:#f1f5f9;color:#94a3b8;border-radius:3px;padding:0 3px;margin-left:3px">휴직</span>' : '';
+      return '<tr style="background:#fafafa"><td style="padding:5px 6px;color:#64748b">' + n + tag + '</td>'
+        + td(has ? (a.ic + a.tc).toLocaleString() : '-') + td(has ? a.ic.toLocaleString() : '-') + td(has ? a.tc.toLocaleString() : '-')
+        + td(has ? a.wd + '일' : '-') + td(has ? a.icPct.toFixed(1) + '%' : '-') + td(has ? a.tcPct.toFixed(1) + '%' : '-') + '</tr>';
+    }).join('');
+    return '<div class="chart-card" style="padding:14px 16px;border-top:3px solid #cbd5e1;grid-column:1/-1">'
+      + '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;flex-wrap:wrap;gap:6px">'
+      + '<span style="font-size:14px;font-weight:800;color:#64748b">📁 이전 구성원</span>'
+      + '<span style="font-size:11px;color:#94a3b8">퇴사 · 휴직 · 이동 인원 — 조별 합산에 포함하지 않음 · 개인 실적은 연초부터 누적</span></div>'
+      + '<table style="width:100%;border-collapse:collapse;font-size:12px"><thead><tr style="border-bottom:1px solid #e2e8f0">'
+      + th('이름', false) + th('처리량', true) + th('인입', true) + th('콜백', true) + th('근무', true) + th('인입기여', true) + th('콜백기여', true)
+      + '</tr></thead><tbody>' + rows + '</tbody></table></div>';
+  }
   document.getElementById('teamGrid').innerHTML = TEAMS.map(team => {
-    const formerNames   = team.former   || [];
+    /*TEAM_REORG_v2*/const formerNames   = (window.agentPeriod === 'past') ? (team.former || []) : [];  // 현재 모드: 이전 구성원은 하단 별도 블록
     const transferNames = team.transfer || [];
     // allM: 팀 성과 합산 대상 (members + former + transfer 모두 포함)
     const allM          = [...team.members, ...formerNames, ...transferNames];
@@ -6325,7 +6359,7 @@ function renderAgent() {
           </td>
           <td style="text-align:right;padding:5px 6px;font-size:12px;vertical-align:top;color:${isGrayed?'#94a3b8':'inherit'}">${hasData ? `${a.ic.toLocaleString()}${a.icSep>0?`<div style="font-size:9px;color:#dc2626;font-weight:700">⚡9월 +${a.icSep.toLocaleString()} 포함</div>`:''}` : '-'}</td>
           <td style="text-align:right;padding:5px 6px;font-size:12px;vertical-align:top;color:${isGrayed?'#94a3b8':'inherit'}">${hasData ? `${a.tc.toLocaleString()}${a.tcSep>0?`<div style="font-size:9px;color:#dc2626;font-weight:700">⚡9월 +${a.tcSep.toLocaleString()} 포함</div>`:''}` : '-'}</td>
-          /*CHAT_TD_v1*/<td style="text-align:right;padding:5px 6px;font-size:12px;vertical-align:top">${(function(){var n=(window.chatCountOf?chatCountOf(a.name):0);return n>0?`<span style="color:#b45309;font-weight:800">${n.toLocaleString()}</span>`:'<span style="color:#cbd5e1">-</span>';})()}</td>
+          <!--CHAT_TD_v1--><td style="text-align:right;padding:5px 6px;font-size:12px;vertical-align:top">${(function(){var n=(window.chatCountOf?chatCountOf(a.name):0);return n>0?`<span style="color:#b45309;font-weight:800">${n.toLocaleString()}</span>`:'<span style="color:#cbd5e1">-</span>';})()}</td>
           <td style="text-align:right;padding:5px 6px;font-size:12px;vertical-align:top;color:${isGrayed?'#94a3b8':'inherit'}">${hasData ? a.wd+'일' : '-'}</td>
           <td style="text-align:right;padding:5px 6px;vertical-align:top">
             <div style="font-size:13px;font-weight:700;color:${isGrayed?'#94a3b8':team.color}">${hasData ? a.icPct.toFixed(1)+'%' : '-'}</div>
@@ -6357,13 +6391,26 @@ function renderAgent() {
       </tr>
       ${formerStats.map(a => memberRow(a, true)).join('')}` : '';
 
+        const _chatKpi = (function(){
+      if (!team.chat) return '';
+      var tot = team.members.reduce(function(s,n){ return s + (window.chatCountOf ? chatCountOf(n) : 0); }, 0);
+      var days = window.chatDays ? chatDays() : 0;
+      var perDay = days ? tot/days : 0, perHead = team.members.length ? tot/team.members.length : 0;
+      return '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:#fffbeb;border-radius:8px;margin-bottom:12px;overflow:hidden;border:1px solid #fde68a">'
+        + '<div style="padding:10px 8px;text-align:center"><div style="font-size:9px;color:#b45309;letter-spacing:.5px;margin-bottom:2px">일평균 채팅</div>'
+        + '<div style="font-size:22px;font-weight:900;color:#b45309;line-height:1">' + perDay.toFixed(1) + '<span style="font-size:11px;font-weight:700;margin-left:2px">건</span></div>'
+        + '<div style="font-size:9px;color:#94a3b8;margin-top:4px">운영 ' + days + '일 · 누적 ' + tot.toLocaleString() + '건</div></div>'
+        + '<div style="padding:10px 8px;text-align:center;border-left:1px solid #fde68a"><div style="font-size:9px;color:#b45309;letter-spacing:.5px;margin-bottom:2px">인당 채팅건수</div>'
+        + '<div style="font-size:22px;font-weight:900;color:#0f172a;line-height:1">' + Math.round(perHead).toLocaleString() + '<span style="font-size:11px;font-weight:700;margin-left:2px">건</span></div>'
+        + '<div style="font-size:9px;color:#94a3b8;margin-top:4px">' + team.members.length + '명 기준</div></div></div>';
+    })();
     return `
       <div class="chart-card" style="padding:14px 16px;border-top:3px solid ${team.color}">
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
           <span style="font-size:16px;font-weight:800;color:${team.color}">${team.name}</span>
           <span style="font-size:11px;color:#94a3b8">${team.members.length}명 · 조장: <strong style="color:${team.color}">${team.leader}</strong></span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#f8fafc;border-radius:8px;margin-bottom:12px;overflow:hidden;border:1px solid #e2e8f0">
+        ${team.chat ? _chatKpi : `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:#f8fafc;border-radius:8px;margin-bottom:12px;overflow:hidden;border:1px solid #e2e8f0">
           <div style="padding:10px 8px;text-align:center">
             <div style="font-size:9px;color:#94a3b8;letter-spacing:.5px;margin-bottom:2px">상담인입 (1인당)</div>
             <div style="font-size:22px;font-weight:900;color:${team.color};line-height:1">${ppIC.toFixed(1)}%</div>
@@ -6382,7 +6429,7 @@ function renderAgent() {
             <div style="font-size:10px;color:#64748b;margin-top:4px">팀합계 ${combinedPct.toFixed(1)}%</div>
             <div style="font-size:9px;color:#94a3b8;margin-top:1px">실효 ${effN.toFixed(1)}명</div>
           </div>
-        </div>
+        </div>`}
         <table style="width:100%;border-collapse:collapse;font-size:12px">
           <thead>
             <tr style="border-bottom:1px solid #e2e8f0">
@@ -6398,7 +6445,7 @@ function renderAgent() {
           <tbody>${activeRows}${transferRows}${formerRows}</tbody>
         </table>
       </div>`;
-  }).join('');
+  }).join('') + _formerBlock();
 
   // ── 퇴사·이동 (태그형) ──────────────────────────────────
   const inactiveStats = INACTIVE.map(n=>statsMap[n]).filter(Boolean);
