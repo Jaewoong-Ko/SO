@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>병원고객팀 2026년 성과 조회</title>
+<style>
+:root{
+  --red:#d5001c; --red-d:#a80016; --ink:#111214; --ink2:#2b2d31; --mute:#6b7078;
+  --silver:#c9cdd2; --silver2:#e6e8eb; --silver3:#f4f5f6; --line:#d8dbdf; --white:#fff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Pretendard','Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;color:var(--ink);
+  background:linear-gradient(180deg,#dfe2e6 0%,#eef0f2 38%,#f6f7f8 100%);min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px 60px}
+/* header */
+.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#9aa0a7 0%,#d7dadd 28%,#f3f4f5 46%,#c3c7cc 64%,#8d939a 100%);
+  border-bottom:1px solid #8d939a}
+.hero .stripe{position:absolute;left:0;right:0;bottom:16px;height:18px;background:var(--red);box-shadow:0 0 0 6px rgba(213,0,28,.12)}
+.hero .stripe2{position:absolute;top:0;bottom:0;right:16%;width:120px;background:var(--red);opacity:.92}
+.hero .in{position:relative;max-width:1180px;margin:0 auto;padding:34px 28px 60px}
+.hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:4px;font-weight:800;color:var(--white);background:var(--ink);padding:5px 12px;border-radius:2px}
+.hero h1{margin:14px 0 6px;font-size:40px;font-weight:900;letter-spacing:-1px;color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.hero h1 b{color:var(--red)}
+.hero p{margin:0;font-size:14px;color:var(--ink2);font-weight:600}
+/* section */
+.sec{margin-top:34px}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-h .bar{width:6px;height:26px;background:var(--red)}
+.sec-h h2{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px}
+.sec-h .sub{font-size:13px;color:var(--mute);font-weight:600}
+/* goal cards */
+.goals{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gcard{position:relative;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px 18px 18px;overflow:hidden;
+  box-shadow:0 10px 24px rgba(17,18,20,.07)}
+.gcard:before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--ink) 0 70%,var(--red) 70% 100%)}
+.gcard .no{font-size:12px;font-weight:900;color:var(--red);letter-spacing:2px}
+.gcard h3{margin:6px 0 14px;font-size:17px;line-height:1.35;font-weight:900;min-height:46px}
+.gcard .row{display:flex;gap:10px;padding:8px 0;border-top:1px dashed var(--line);font-size:13.5px}
+.gcard .row .k{flex:0 0 34px;color:var(--mute);font-weight:700}
+.gcard .row .v{flex:1;font-weight:700;line-height:1.45;word-break:keep-all}
+.gcard .ev{margin-top:12px;display:flex;align-items:center;justify-content:space-between;background:var(--silver3);border-radius:10px;padding:10px 12px}
+.gcard .ev > span:first-child{font-size:12px;color:var(--mute);font-weight:800}
+/* grade chips */
+.gr{display:inline-flex;align-items:center;justify-content:center;min-width:44px;padding:4px 10px;border-radius:6px;font-weight:900;font-size:13px;letter-spacing:1px}
+.gr.EX{background:linear-gradient(135deg,#ff1a3c,#d5001c);color:#fff;box-shadow:0 0 0 2px rgba(255,26,60,.25),0 3px 10px rgba(213,0,28,.45)}
+.gr.VG{background:#f2700f;color:#fff}
+.gr.GD{background:#f5b400;color:#3a2a00}
+.gr.NI{background:#c9cdd2;color:#4b5058}
+.gr.UN{background:#fff;color:var(--ink);border:1.5px solid var(--ink)}
+.gr.big{font-size:18px;padding:6px 14px;min-width:60px}
+/* login */
+.login{display:flex;flex-wrap:wrap;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:14px;padding:18px 20px;
+  box-shadow:0 12px 26px rgba(17,18,20,.18);border-left:8px solid var(--red)}
+.login .t{font-weight:900;font-size:15px;margin-right:auto}
+.login .t small{display:block;font-weight:600;font-size:12px;color:#aeb3ba;margin-top:3px}
+.login input{height:42px;border-radius:8px;border:1px solid #3a3d42;background:#1d1f23;color:#fff;padding:0 14px;font-size:15px;font-weight:700;outline:none}
+.login input:focus{border-color:var(--red)}
+.login input.pin{width:130px;letter-spacing:4px;text-align:center}
+.login input.nm{width:140px}
+.login button{height:42px;border:0;border-radius:8px;background:var(--red);color:#fff;font-weight:900;font-size:15px;padding:0 22px;cursor:pointer}
+.login button:hover{background:var(--red-d)}
+.login button.ghost{background:transparent;border:1px solid #5b6068}
+.login .msg{width:100%;font-size:13px;font-weight:700;color:#ff8a98;min-height:0}
+.who{display:none;align-items:center;gap:10px}
+.who b{font-size:16px}
+.locked{margin-top:14px;text-align:center;padding:46px 20px;border:2px dashed var(--silver);border-radius:14px;color:var(--mute);font-weight:700;background:rgba(255,255,255,.55)}
+/* indicator panels */
+.kpis{display:none;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(17,18,20,.06)}
+.panel.full{grid-column:1/-1}
+.panel .ph{padding:16px 18px 12px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#f7f8f9)}
+.panel .ph .tag{display:inline-block;font-size:11px;font-weight:900;color:#fff;background:var(--ink);padding:3px 8px;border-radius:4px;margin-right:6px}
+.panel .ph .tag.ld{background:var(--red)}
+.panel .ph h3{display:inline;margin:0;font-size:16.5px;font-weight:900}
+.panel .ph .crit{margin-top:8px;font-size:12.5px;color:var(--ink2);line-height:1.6}
+.panel .ph .crit .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.panel .ph .crit .chips span{background:var(--silver3);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-weight:700;font-size:12px}
+.panel .ph .note{margin-top:6px;font-size:11.5px;color:var(--mute)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--silver3);color:var(--mute);font-size:12px;font-weight:800;text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th.r,td.r{text-align:right}
+td{padding:8px 12px;border-bottom:1px solid #eceef0;font-weight:600}
+tr.me td{font-weight:900}
+tr.me td.nm{color:#1d4ed8}
+td.rk{width:58px}
+.rkb{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;color:#fff;font-weight:900;font-size:13px}
+td.nm{font-weight:800}
+.mask{color:#a3a8af;letter-spacing:1px}
+.plus{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:13px;font-weight:900;vertical-align:1px}
+.summary{display:none;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 10px 24px rgba(17,18,20,.06)}
+.summary h4{margin:0 0 12px;font-size:15px;font-weight:900}
+.summary h4 span{font-size:12px;color:var(--mute);font-weight:700;margin-left:6px}
+.scards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.scard{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:linear-gradient(180deg,#fff,#f6f7f8);position:relative;overflow:hidden}
+.scard:before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--ink)}
+.scard.ld:before{background:var(--red)}
+.scard.rf{background:linear-gradient(180deg,#fafafa,#f1f2f4)}
+.scard.rf:before{background:#8d939a}
+.rtag{display:inline-block;font-size:10.5px;font-weight:900;color:#fff;background:#8d939a;border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.scard .k{font-size:12px;color:var(--mute);font-weight:800}
+.scard .v{display:flex;align-items:flex-end;justify-content:space-between;margin-top:8px}
+.scard .v b{font-size:22px;font-weight:900}
+.scard .v small{display:block;font-size:11.5px;color:var(--mute);font-weight:700;margin-top:2px}
+@media(max-width:980px){.scards{grid-template-columns:1fr 1fr}}
+.howto{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 8px 20px rgba(17,18,20,.05);border-top:4px solid var(--ink)}
+.hcard h4{margin:0 0 10px;font-size:16px;font-weight:900}
+.hcard h4 small{font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:2px}
+.hcard p{margin:0 0 8px;font-size:13.5px;line-height:1.7;color:var(--ink2);word-break:keep-all}
+.hcard p b{color:var(--ink)}
+.tscroll{overflow-x:auto}
+.panel.full th,.panel.full td{white-space:nowrap}
+.smp{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.smp ul{margin:8px 0 0;padding-left:18px}
+.smp li{font-size:13px;line-height:1.6;color:var(--ink2);margin-bottom:6px;word-break:keep-all}
+.smp b{display:inline-block;font-size:12.5px;color:#fff;border-radius:5px;padding:3px 9px}
+.smp .sa{background:#b91c1c}.smp .sb{background:#c2410c}.smp .sc{background:#15803d}
+@media(max-width:980px){.smp{grid-template-columns:1fr}}
+@media(max-width:980px){.howto{grid-template-columns:1fr}}
+.bar-in{height:6px;border-radius:3px;background:var(--silver2);overflow:hidden;margin-top:4px}
+.bar-in i{display:block;height:100%}
+.sub-v{font-size:11px;color:var(--mute);font-weight:600}
+.foot{margin-top:28px;font-size:12px;color:var(--mute);line-height:1.7}
+@media(max-width:980px){.goals{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:1fr}}
+@media(max-width:560px){.goals{grid-template-columns:1fr}.hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="stripe"></div><div class="stripe2"></div>
+  <div class="in">
+    <span class="eyebrow">PERFORMANCE 2026</span>
+    <h1>병원고객팀 <b>2026년</b> 성과 조회</h1>
+    <p>인사평가 작성을 위한 팀·개인 성과 기준 자료</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="sec">
+    <div class="sec-h"><div class="bar"></div><h2>전략목표 (팀단위)</h2></div>
+    <div class="goals">
+      <div class="gcard"><div class="no">01</div><h3>서비스 인입감소 실현</h3>
+        <div class="row"><div class="k">목표</div><div class="v">5년평균比 50% 감소</div></div>
+        <div class="row"><div class="k">실적</div><div class="v">52% <span class="sub-v">(10월 감소율)</span></div></div>
+        <div class="ev"><span>평가</span><span class="gr big EX">EX</span></div></div>
+      <div class="gcard"><div class="no">02</div><h3>서비스 자동화 시스템 보급</h3>
+        <div class="row"><div class="k">목표</div><div class="v">월간 지속사용 50%</div></div>
+        <div class="row"><div class="k">실적</div><div class="v">72% <span class="sub-v">(10월말 기준)</span></div></div>
+        <div class="ev"><span>평가</span><span class="gr big EX">EX</span></div></div>
+      <div class="gcard"><div class="no">03</div><h3>서비스 자동화 시스템 품질향상</h3>
+        <div class="row"><div class="k">목표</div><div class="v">챗봇 정확도 90%<br>상담표준 준수율 80%</div></div>
+        <div class="row"><div class="k">실적</div><div class="v">상담표준 준수율 52%</div></div>
+        <div class="ev"><span>평가</span><span class="gr big GD">GD</span></div></div>
+      <div class="gcard"><div class="no">04</div><h3>대리점CRM 툴 보급</h3>
+        <div class="row"><div class="k">목표</div><div class="v">지원내역 80% 입력<br>설치 100%</div></div>
+        <div class="row"><div class="k">실적</div><div class="v">설치 100%</div></div>
+        <div class="ev"><span>평가</span><span class="gr big VG">VG</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><div class="bar"></div><h2>고유평가 지표 조회</h2><span class="sub">본인 이름과 비밀번호(4자리)를 입력하면 조회됩니다 · 본인 외 이름은 가려집니다</span></div>
+    <div class="login" id="loginBox">
+      <div class="t">개인 조회 로그인<small>비밀번호는 팀장에게 개별 전달받은 4자리 숫자</small></div>
+      <div id="loginForm" style="display:flex;gap:10px;flex-wrap:wrap">
+        <input class="nm" id="inName" placeholder="이름" autocomplete="off">
+        <input class="pin" id="inPin" placeholder="••••" maxlength="12" type="password" autocomplete="off">
+        <button id="btnLogin">조회</button>
+      </div>
+      <div class="who" id="whoBox"><span>조회자</span><b id="whoName"></b><span class="gr VG" id="whoRole" style="font-size:11px"></span><button class="ghost" id="btnLogout">로그아웃</button></div>
+      <div class="msg" id="msg"></div>
+    </div>
+    <div class="summary" id="summary"></div>
+    <div class="locked" id="locked">🔒 로그인 후 고유평가 지표가 표시됩니다</div>
+    <div class="kpis" id="kpis"></div>
+  </div>
+
+  <div class="sec" id="howto">
+    <div class="sec-h"><div class="bar"></div><h2>산출 방법</h2><span class="sub">각 지표를 어떻게 계산했는지 쉽게 풀어 쓴 설명입니다</span></div>
+    <div class="howto">
+      <div class="hcard"><h4>1. 챗봇 사용 안내 <small>개인</small></h4>
+        <p><b>무엇을 셌나요?</b> 전화 상담 중에 상담사가 고객에게 <b>"바로바로(AI 챗봇)를 이용해 보세요"</b>라고 안내한 통화의 수입니다.</p>
+        <p><b>어디서 셌나요?</b> 상담 통화 녹취를 글로 바꾼 STT 원문(2026-05-18 수집 시작 ~ 09-30)에서 상담사 발화만 봤습니다.</p>
+        <p><b>어떻게 판단했나요?</b> "챗봇", "에이아이 챗봇", "우측 상단 바로바로", "바로바로라고 하는 …"처럼 서비스를 가리키는 말이 있으면 안내로 봤습니다. "바로바로 실행됩니다"처럼 '빨리'라는 뜻으로 쓴 말은 제외했습니다. 한 통화에서 여러 번 말해도 <b>1건</b>입니다.</p>
+        <p><b>등급</b> 건수 순위로 상위 20%까지 EX, 40%까지 VG, 80%까지 GD, 나머지 NI.</p></div>
+      <div class="hcard"><h4>2. 콜 처리 기여도 <small>개인</small></h4>
+        <p><b>한 줄 요약</b> 팀 전체가 받은 전화와 처리한 콜백 중에서 <b>내가 맡은 몫이 몇 %인가</b>입니다.</p>
+        <p><b>계산</b> 기여율 = (내 인입 응대 ÷ 팀 전체 인입 응대) × 70% + (내 콜백 처리 ÷ 팀 전체 콜백 처리) × 30%</p>
+        <p><b>예시</b> 팀 전체 인입 10,000건 중 500건(5%), 콜백 2,000건 중 80건(4%)을 처리했다면 → 5×0.7 + 4×0.3 = <b>4.7%</b></p>
+        <p><b>기간</b> 2026-01-01 ~ 10-31, 9월 프로모션 기간 실적은 2배로 반영. 채팅 전환·휴직 인원은 실제 전화 업무를 한 기간만 잘라, 같은 기간 팀 전체와 비교해 계산했습니다.</p>
+        <p><b>자료</b> 상담원 실적 탭과 같은 전화 시스템(IMS) 기록.</p></div>
+      <div class="hcard"><h4>3·4. 조장 지표 <small>조장</small></h4>
+        <p><b>기준 조</b> 9월 개편 이전 4개 조(1~8월).</p>
+        <p><b>3. 챗봇 사용 안내</b> 조원들의 안내 건수를 모두 더해 조원 수로 나눈 <b>1인당 안내 건수</b>로 순위를 매깁니다(STT 05-18 ~ 08-31).</p>
+        <p><b>4. 팀별 콜 처리 기여도</b> 조원 전체의 기여율(2번과 같은 방식)을 더한 뒤, 조원 수로 나눈 <b>1인당 기여율</b>입니다. 중간에 들어오거나 나간 인원은 근무한 개월 수만큼만 인원으로 셉니다(예: 4개월 근무 = 0.5명).</p></div>
+      <div class="hcard"><h4>5. 근태(성실) — 실근무 가동율 <small>참고</small></h4>
+        <p><b>한 줄 요약</b> 하루 근무시간 중 <b>실제로 일하고 있던 시간</b>의 비율입니다.</p>
+        <p><b>"일하고 있던 시간"이란?</b> ① 고객과 통화한 시간 ② 지원 건을 접수해서 완료할 때까지 처리한 시간(원격 작업 포함, 1건당 최대 60분)을 합친 것입니다. 통화하면서 동시에 처리한 시간은 <b>한 번만</b> 셉니다(겹치는 시간 중복 없음).</p>
+        <p><b>기준 시간</b> 하루 8시간(점심 제외). 9시 전에 업무를 시작한 날은 얼리버드(8:30~17:30), 그 외는 일반 근무(9:00~18:00)로 봅니다. 오전이나 오후 한쪽에만 업무 기록이 있으면 반차로 보고 4시간을 기준으로 합니다.</p>
+        <p><b>예시</b> 8시간 근무일에 실제 처리 시간이 6시간이면 → 6 ÷ 8 = <b>75%</b></p>
+        <p><b>근무일</b> 하루 지원내역 10건 이상인 평일만 셉니다(2026-06-01 ~ 10-30).</p>
+        <p><b>꼭 알아둘 점</b> 전화 대기, 보류, 기록을 남기지 않은 업무 시간은 시스템에 남지 않아 빠집니다. 그래서 100%가 나오기 어렵고, 절대 점수가 아니라 <b>같은 기준으로 잰 사람 간 비교</b>용입니다. 반차는 근태 기록이 아니라 업무 기록으로 <b>추정</b>한 값입니다.</p></div>
+      <div class="hcard"><h4>[참고] 실 서비스 처리량 <small>참고</small></h4>
+        <p><b>한 줄 요약</b> 지원내역에 남긴 건수 중 <b>실제로 고객을 도운 건수</b>만 세었습니다.</p>
+        <p><b>계산</b> 실 서비스 = 총 접수 건 − 허수(A + B)</p>
+        <p><b>A 콜백·부재</b> 콜백했지만 고객과 연결되지 않은 기록(부재, 무응답, 바로 끊김, 전화 안 받음 등).</p>
+        <p><b>B 빈 기록</b> 처리 시간이 1분 이하이면서 상담내용이 10자 미만인 기록(예: "확인", "통화완료"). 단, 접수 시각 앞뒤 3분 안에 1분 이상 실제 통화가 있으면 빈 기록이 아닌 것으로 되돌렸습니다.</p>
+        <p><b>기간·순위</b> 2026-06-01 ~ 10-30 평일, 실 서비스 <b>총 건수</b>로 순위. 기록을 꼼꼼히 남기는 사람일수록 허수가 정확히 잡히므로, 허수율이 높다고 곧 나쁜 것은 아닙니다.</p></div>
+      <div class="hcard" style="grid-column:1/-1"><h4>허수 판정 샘플 <small>예시</small></h4>
+        <p style="color:var(--mute)">실제 지원내역에서 뽑은 예시입니다 (연락처·고객 정보는 지움).</p>
+        <div class="smp"><div><b class="sa">A 콜백·부재</b><ul><li>인입 후 바로 전화 끊으심 콜백 / 통화중</li><li>[콜백] 연락드렸으나 담당자분 부재중이시다 차후 재문의주시겠다 말씀함</li><li>콜백 ***/ 전화드렸으나 그냥 끊으심.</li><li>[얼리버드] ***/ 전화 안받음</li></ul></div>
+        <div><b class="sb">B 빈 기록</b><ul><li>통화완료</li><li>확인</li><li>[콜백] 해결함</li><li>[콜백]-기 처리</li></ul></div>
+        </div></div>
+    </div>
+  </div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const PUBLIC = {"svc": [{"id": "p01", "team": "상담1조", "wd": 101, "total": 8025, "A": 77, "B": 7, "fake": 84, "fpct": 1.0, "v": 7941, "pd": 78.6, "rank": 1}, {"id": "p02", "team": "상담3조", "wd": 90, "total": 6556, "A": 64, "B": 40, "fake": 104, "fpct": 1.6, "v": 6452, "pd": 71.7, "rank": 2}, {"id": "p08", "team": "상담1조", "wd": 96, "total": 6214, "A": 97, "B": 54, "fake": 151, "fpct": 2.4, "v": 6063, "pd": 63.2, "rank": 3}, {"id": "p16", "team": "상담2조", "wd": 95, "total": 6002, "A": 62, "B": 35, "fake": 97, "fpct": 1.6, "v": 5905, "pd": 62.2, "rank": 4}, {"id": "p15", "team": "상담3조", "wd": 91, "total": 5954, "A": 47, "B": 14, "fake": 61, "fpct": 1.0, "v": 5893, "pd": 64.8, "rank": 5}, {"id": "p10", "team": "상담3조", "wd": 94, "total": 5500, "A": 49, "B": 2, "fake": 51, "fpct": 0.9, "v": 5449, "pd": 58.0, "rank": 6}, {"id": "p19", "team": "상담1조", "wd": 96, "total": 5522, "A": 134, "B": 19, "fake": 153, "fpct": 2.8, "v": 5369, "pd": 55.9, "rank": 7}, {"id": "p20", "team": "채팅조", "wd": 88, "total": 5340, "A": 61, "B": 2, "fake": 63, "fpct": 1.2, "v": 5277, "pd": 60.0, "rank": 8}, {"id": "p12", "team": "상담1조", "wd": 93, "total": 5146, "A": 25, "B": 2, "fake": 27, "fpct": 0.5, "v": 5119, "pd": 55.0, "rank": 9}, {"id": "p13", "team": "상담3조", "wd": 93, "total": 5126, "A": 32, "B": 84, "fake": 116, "fpct": 2.3, "v": 5010, "pd": 53.9, "rank": 10}, {"id": "p14", "team": "상담2조", "wd": 91, "total": 5152, "A": 135, "B": 77, "fake": 212, "fpct": 4.1, "v": 4940, "pd": 54.3, "rank": 11}, {"id": "p06", "team": "상담2조", "wd": 94, "total": 4983, "A": 54, "B": 61, "fake": 115, "fpct": 2.3, "v": 4868, "pd": 51.8, "rank": 12}, {"id": "p09", "team": "상담3조", "wd": 94, "total": 4961, "A": 101, "B": 8, "fake": 109, "fpct": 2.2, "v": 4852, "pd": 51.6, "rank": 13}, {"id": "p04", "team": "상담2조", "wd": 95, "total": 4911, "A": 149, "B": 2, "fake": 151, "fpct": 3.1, "v": 4760, "pd": 50.1, "rank": 14}, {"id": "p11", "team": "상담2조", "wd": 88, "total": 4899, "A": 183, "B": 1, "fake": 184, "fpct": 3.8, "v": 4715, "pd": 53.6, "rank": 15}, {"id": "p03", "team": "상담1조", "wd": 87, "total": 4663, "A": 49, "B": 25, "fake": 74, "fpct": 1.6, "v": 4589, "pd": 52.7, "rank": 16}, {"id": "p07", "team": "상담1조", "wd": 94, "total": 4616, "A": 118, "B": 31, "fake": 149, "fpct": 3.2, "v": 4467, "pd": 47.5, "rank": 17}, {"id": "p21", "team": "상담3조", "wd": 78, "total": 3882, "A": 147, "B": 2, "fake": 149, "fpct": 3.8, "v": 3733, "pd": 47.9, "rank": 18}, {"id": "p05", "team": "상담2조", "wd": 87, "total": 3635, "A": 38, "B": 6, "fake": 44, "fpct": 1.2, "v": 3591, "pd": 41.3, "rank": 19}, {"id": "p22", "team": "상담1조", "wd": 48, "total": 2368, "A": 33, "B": 0, "fake": 33, "fpct": 1.4, "v": 2335, "pd": 48.6, "rank": 20}], "att": [{"id": "p01", "wd": 101, "act": 6.79, "v": 85.3, "call": 5.51, "rec": 79.5, "early": 19, "half": 1, "rank": 1}, {"id": "p09", "wd": 94, "act": 6.35, "v": 79.8, "call": 4.11, "rec": 52.4, "early": 9, "half": 1, "rank": 2}, {"id": "p05", "wd": 87, "act": 6.36, "v": 79.6, "call": 4.53, "rec": 41.4, "early": 33, "half": 0, "rank": 3}, {"id": "p12", "wd": 93, "act": 6.12, "v": 77.4, "call": 3.72, "rec": 55.1, "early": 2, "half": 2, "rank": 4}, {"id": "p15", "wd": 91, "act": 6.03, "v": 76.2, "call": 4.45, "rec": 65.0, "early": 1, "half": 2, "rank": 5}, {"id": "p02", "wd": 90, "act": 6.07, "v": 75.9, "call": 4.15, "rec": 72.8, "early": 90, "half": 0, "rank": 6}, {"id": "p10", "wd": 94, "act": 5.95, "v": 75.2, "call": 3.79, "rec": 58.5, "early": 15, "half": 2, "rank": 7}, {"id": "p20", "wd": 88, "act": 5.82, "v": 74.5, "call": 3.9, "rec": 57.3, "early": 3, "half": 4, "rank": 8}, {"id": "p19", "wd": 96, "act": 5.84, "v": 73.0, "call": 4.16, "rec": 57.5, "early": 1, "half": 0, "rank": 9}, {"id": "p04", "wd": 95, "act": 5.69, "v": 72.3, "call": 4.1, "rec": 51.7, "early": 95, "half": 3, "rank": 10}, {"id": "p07", "wd": 94, "act": 5.48, "v": 69.7, "call": 3.44, "rec": 49.1, "early": 92, "half": 3, "rank": 11}, {"id": "p06", "wd": 94, "act": 5.42, "v": 68.5, "call": 3.52, "rec": 52.6, "early": 7, "half": 2, "rank": 12}, {"id": "p03", "wd": 87, "act": 5.36, "v": 67.7, "call": 3.77, "rec": 53.6, "early": 6, "half": 2, "rank": 13}, {"id": "p16", "wd": 95, "act": 5.34, "v": 67.1, "call": 3.5, "rec": 63.2, "early": 1, "half": 1, "rank": 14}, {"id": "p22", "wd": 48, "act": 5.07, "v": 64.7, "call": 3.0, "rec": 49.3, "early": 44, "half": 2, "rank": 15}, {"id": "p08", "wd": 96, "act": 4.95, "v": 64.2, "call": 3.41, "rec": 64.7, "early": 0, "half": 7, "rank": 16}, {"id": "p21", "wd": 78, "act": 4.84, "v": 61.7, "call": 3.25, "rec": 49.8, "early": 78, "half": 3, "rank": 17}, {"id": "p11", "wd": 88, "act": 4.45, "v": 56.3, "call": 2.62, "rec": 55.4, "early": 14, "half": 2, "rank": 18}, {"id": "p13", "wd": 93, "act": 4.28, "v": 54.1, "call": 3.23, "rec": 55.1, "early": 14, "half": 2, "rank": 19}, {"id": "p14", "wd": 91, "act": 3.71, "v": 47.7, "call": 2.66, "rec": 56.6, "early": 2, "half": 5, "rank": 20}], "att_period": ["2026-06-01", "2026-10-30"], "cb": [{"id": "p07", "v": 130, "calls": 4732, "team": "상담1조", "rank": 1, "grade": "EX"}, {"id": "p05", "v": 123, "calls": 3905, "team": "상담2조", "rank": 2, "grade": "EX"}, {"id": "p08", "v": 94, "calls": 6124, "team": "상담1조", "rank": 3, "grade": "EX"}, {"id": "p09", "v": 87, "calls": 4910, "team": "상담3조", "rank": 4, "grade": "EX"}, {"id": "p10", "v": 86, "calls": 5599, "team": "상담3조", "rank": 5, "grade": "VG"}, {"id": "p03", "v": 79, "calls": 5179, "team": "상담1조", "rank": 6, "grade": "VG"}, {"id": "p20", "v": 76, "calls": 4968, "team": "채팅조", "rank": 7, "grade": "VG"}, {"id": "p06", "v": 76, "calls": 5248, "team": "상담2조", "rank": 7, "grade": "VG"}, {"id": "p02", "v": 69, "calls": 6438, "team": "상담3조", "rank": 9, "grade": "VG"}, {"id": "p15", "v": 62, "calls": 6890, "team": "상담3조", "rank": 10, "grade": "GD"}, {"id": "p19", "v": 54, "calls": 5364, "team": "상담1조", "rank": 11, "grade": "GD"}, {"id": "p14", "v": 35, "calls": 4863, "team": "상담2조", "rank": 12, "grade": "GD"}, {"id": "p16", "v": 34, "calls": 6312, "team": "상담2조", "rank": 13, "grade": "GD"}, {"id": "p18", "v": 33, "calls": 4667, "team": "채팅조", "rank": 14, "grade": "GD"}, {"id": "p23", "v": 31, "calls": 3729, "team": "채팅조", "rank": 15, "grade": "GD"}, {"id": "p11", "v": 31, "calls": 5229, "team": "상담2조", "rank": 15, "grade": "GD"}, {"id": "p22", "v": 31, "calls": 2986, "team": "상담1조", "rank": 15, "grade": "GD"}, {"id": "p01", "v": 30, "calls": 7963, "team": "상담1조", "rank": 18, "grade": "GD"}, {"id": "p12", "v": 30, "calls": 5975, "team": "상담1조", "rank": 18, "grade": "GD"}, {"id": "p24", "v": 23, "calls": 2864, "team": "채팅조", "rank": 20, "grade": "NI"}, {"id": "p04", "v": 23, "calls": 4791, "team": "상담2조", "rank": 20, "grade": "NI"}, {"id": "p13", "v": 11, "calls": 5510, "team": "상담3조", "rank": 22, "grade": "NI"}, {"id": "p21", "v": 1, "calls": 4920, "team": "상담3조", "rank": 23, "grade": "NI"}], "contrib": [{"id": "p01", "v": 6.66, "ic": 6.48, "tc": 7.08, "grp": "G2", "grade": "EX", "team": "상담1조", "rank": 1}, {"id": "p15", "v": 6.48, "ic": 6.8, "tc": 5.73, "grp": "G2", "grade": "EX", "team": "상담3조", "rank": 2}, {"id": "p02", "v": 5.76, "ic": 5.36, "tc": 6.68, "grp": "G2", "grade": "VG", "team": "상담3조", "rank": 3}, {"id": "p08", "v": 5.34, "ic": 5.81, "tc": 4.24, "grp": "G2", "grade": "GD", "team": "상담1조", "rank": 4}, {"id": "p23", "v": 5.02, "ic": 5.18, "tc": 4.64, "grp": "G1", "grade": "VG", "team": "채팅조", "rank": 5}, {"id": "p03", "v": 4.75, "ic": 4.6, "tc": 5.08, "grp": "G1", "grade": "VG", "team": "상담1조", "rank": 6}, {"id": "p16", "v": 4.72, "ic": 4.89, "tc": 4.32, "grp": "G1", "grade": "VG", "team": "상담2조", "rank": 7}, {"id": "p11", "v": 4.68, "ic": 4.33, "tc": 5.51, "grp": "G2", "grade": "GD", "team": "상담2조", "rank": 8}, {"id": "p13", "v": 4.63, "ic": 4.59, "tc": 4.73, "grp": "G2", "grade": "GD", "team": "상담3조", "rank": 9}, {"id": "p14", "v": 4.43, "ic": 4.42, "tc": 4.47, "grp": "G2", "grade": "NI", "team": "상담2조", "rank": 10}, {"id": "p10", "v": 4.4, "ic": 4.43, "tc": 4.32, "grp": "G1", "grade": "GD", "team": "상담3조", "rank": 11}, {"id": "p12", "v": 4.12, "ic": 4.3, "tc": 3.72, "grp": "G2", "grade": "NI", "team": "상담1조", "rank": 12}, {"id": "p24", "v": 4.07, "ic": 4.32, "tc": 3.49, "grp": "G2", "grade": "NI", "team": "채팅조", "rank": 13}, {"id": "p06", "v": 4.04, "ic": 4.21, "tc": 3.65, "grp": "G1", "grade": "GD", "team": "상담2조", "rank": 14}, {"id": "p19", "v": 4.01, "ic": 4.12, "tc": 3.77, "grp": "신입", "grade": "EX", "team": "상담1조", "rank": 15}, {"id": "p21", "v": 3.98, "ic": 3.48, "tc": 5.14, "grp": "G1", "grade": "NI", "team": "상담3조", "rank": 16}, {"id": "p07", "v": 3.86, "ic": 3.56, "tc": 4.58, "grp": "G1", "grade": "NI", "team": "상담1조", "rank": 17}, {"id": "p20", "v": 3.8, "ic": 4.34, "tc": 2.56, "grp": "G1", "grade": "NI", "team": "채팅조", "rank": 18}, {"id": "p04", "v": 3.6, "ic": 3.47, "tc": 3.93, "grp": "신입", "grade": "VG", "team": "상담2조", "rank": 19}, {"id": "p09", "v": 3.55, "ic": 3.86, "tc": 2.83, "grp": "신입", "grade": "VG", "team": "상담3조", "rank": 20}, {"id": "p18", "v": 3.38, "ic": 3.55, "tc": 2.98, "grp": "G1", "grade": "NI", "team": "채팅조", "rank": 21}, {"id": "p22", "v": 3.13, "ic": 2.63, "tc": 4.28, "grp": "G1", "grade": "NI", "team": "상담1조", "rank": 22}, {"id": "p05", "v": 2.83, "ic": 2.58, "tc": 3.41, "grp": "G2", "grade": "NI", "team": "상담2조", "rank": 23}], "lcb": [{"id": "L4", "team": "상담4조", "v": 63.8, "sum": 383, "n": 6, "rank": 1, "grade": "EX"}, {"id": "L2", "team": "상담2조", "v": 54.8, "sum": 329, "n": 6, "rank": 2, "grade": "VG"}, {"id": "L1", "team": "상담1조", "v": 42.8, "sum": 257, "n": 6, "rank": 3, "grade": "GD"}, {"id": "L3", "team": "상담3조", "v": 35.3, "sum": 212, "n": 6, "rank": 4, "grade": "GD"}], "lteam": [{"id": "L4", "team": "상담4조", "v": 4.53, "sum": 27.38, "n": 6.05, "rank": 1, "grade": "VG"}, {"id": "L2", "team": "상담2조", "v": 4.1, "sum": 26.47, "n": 6.45, "rank": 2, "grade": "GD"}, {"id": "L3", "team": "상담3조", "v": 4.01, "sum": 24.57, "n": 6.12, "rank": 3, "grade": "GD"}, {"id": "L1", "team": "상담1조", "v": 3.67, "sum": 21.59, "n": 5.88, "rank": 4, "grade": "NI"}], "excluded": [{"id": "p17", "why": "휴직 복귀(10/20) — 평가기간 근무 부족으로 순위 제외"}], "meta": {"iter": 150000, "built": "2026-11-04"}};
+const VAULT  = {"4cfd38b7962f8a45": {"s": "YSGACFPBCRoS02RwBj/bPw==", "i": "204uUVKmHXnYqaXv", "c": "euys79YSjWMRnRKIMYKMtan+GSmsTdFst26487SlxTYVzIgNMYdkIDBJCM8ms23zNsDlhioj0OpuKloiobH01vVbvihsgIbDMj/8dCiN+P+NsZPF7i8qTL2XH4S5jWFy1kY6HGrFZDKOq08ZUNid1Dp2+TOPO0ERmIC7A39Fb8kyjB2odPSirhQWGL1cIBIVO6w1x1jlcls5Kweo"}, "be69c4ff2d226456": {"s": "6DtPA+37iT5J43KUi3WY6g==", "i": "FEYNrjwco+JZ7Id2", "c": "WJFGYhzPd+1aKcFX2IBFjnjKX2Ud3APIy5TcIL0t4lSeoVxwyqy/D38HkE4C1osUSsPYq+tvFKlL8HoJwg3VujZMpy/ceEtAqISczUP/ZgRkOF6rEW9KjncF4qQRWXyOur7TySWYqX/a5Qo3Tnl6HjHwPC9tuA4apwds18IIZO8+A1liVGdjBbIvhwWglWnin3xu5NwvXoXEwwFs"}, "da3737c8fa6ffadc": {"s": "YSmZbpHkZnpqoD2Q5UVvEg==", "i": "LCN3XHjgRrzx+pP0", "c": "vKk0f3kEnAZTFwdWN5HP9EVAhkespUOG1GYHhizg7lX+5oKvJY0QcJxPYV/tS9OAhHNsXBJPG6XuG/FqtuK0moZK4rd2HDPnYdCK/M3GGP2QfL1eGhD0csGQLVQPYwToFVdKgstkjqkSuuyLrIhE4kYjQQg67GLwdg0rR86B6LdWEw28xdokNMKdIQz1C5oM+BvUqR2duAUf1hSu"}, "b00c172f407b6275": {"s": "nFSX0PyuFwSagncMg3NeLw==", "i": "6WAq24sf+dilMOB0", "c": "ACsGglC4eXxVaZJJ5NIJrjdmBk4hy11tZpQLb4V8P8mZpQaZ5fB38i2CaxnFivDhEckDdlA0JnnuIDf81nwLnoyBI/0KE5Uykpmz9F2oPQnDLt0nv5NprMtQ1K1rcoedZkaTmgfMmp4trnERS2lmJpKMI46cu5+zxrmK2Roc6DXNfFJwIBSGTeoIugAapM5r68ZVWe7+O5BM"}, "376bd479ded90104": {"s": "zcs/WDmU/2efuzPznWEnZg==", "i": "NQow9GSlQFt/7NKE", "c": "Zt3fj20kQuFBXTdR87G0MNfK8lrcliweQTS/MN2BCFCvF9JtbzK029lQ4r9IZ4royPgFCgzV2zdqzugK9bo1L4iV6mlAs6jMeCZKENiGkikpnozM"}, "0ce7f2d3e10f0943": {"s": "xw3zoZpTOxoKXbBZn0L+vg==", "i": "gdUkt7uSg/EJgklz", "c": "Jj6aII6p1AjCnupyBWkCP+MnIeu0778bv2+5KdCfybLIhZ6NfAzdyWKMmW1CkaRfxeufQhNJz1tPWftu0FWyRr+V1zY="}, "2479355c65de72c7": {"s": "m5g4d9QkEFLuBXowdnp7PA==", "i": "Z0tnJEqfUDAQqPqG", "c": "5ld7qlcBizoluEjp7VNwfotfVLM5E5ofW9kqLXK/RThgLbOrrL966gJcbQ+nrIIse2CBcGE9AFhGJbGHnHqKTtQ="}, "fa449c1dc3498659": {"s": "uFeMqNkyuPPyaaC/WB2N2A==", "i": "OqYbJgFZfVrlLIRS", "c": "comayfeExOA/8PJxLWUI9K2qVrOo7FmT+1JK3va3ceGFqJjQo2UuoI5St0mFRAeEN1n2wcUfzekFbO69mnujOZg="}, "f58dccb81257890c": {"s": "IjsIYLSk0/rTafIg3qWnIA==", "i": "5C/U7NasI5lac5YV", "c": "eWJHTmRq4n991Rhv1DgliPabO9DeM2T/8HVSLDsSth6FURR7guuwqYC3Dw4RzOoLTLPDnK4tns1WAuQ6Yc//5oM="}, "d768a926be7ca1ed": {"s": "QNZFMqaQAa9CZIYZccdrPw==", "i": "SyCGc6QV/ji5JuQY", "c": "ejerVqaeW6DzFmutcGcA7DQu4ERDA0YujvyD3LIJZr5YmjJk8FPRFegoU43JjeJ3C6okEPqRlHdey6hz7gLMhFo="}, "5e16964ba12a13c4": {"s": "1ot523w5PGMgBDmBzHpdiw==", "i": "p1EZ+d9KmIZdaj0b", "c": "DhWNbfgQUMy4ozwBYI6hLZSTTKSJ4X4f1LllQ/+dDZCjHeJYeCTQnzyuSE1APb/kXWCetUu17YMA3YWtSa227gI1+/3P2adj5qcoQ2LJx8+l3Lf+"}, "a01221787c13ab06": {"s": "Sygc6w593ItA2dsmY7NUdg==", "i": "47t9x1cqmDnjO4Dh", "c": "mJqSVUII89/ax11M2iqJdrJWOWzGkxbKv6E0zRWx456nNYajFbm5eYxQ7iK9BgXIu95sL14u1jbujS0egxqiAlrxKC55jnDupZucnpC6+LKwdRaj"}, "1799e4cc591b6533": {"s": "lL4oWgG/cBHPTt8mbCdoUg==", "i": "0Dz+Cag6GP0fRwuA", "c": "ScouG0I9W/GnauI7vEQ1R71nbvIF+O28SXKe7GT2Wrynu4TktRM01u7aVABepQnKhdJfJXo76rnPGoX82ESQRX4="}, "819b2af34d09450c": {"s": "zu2qgY6E4ARo1kDKjw8+iA==", "i": "dgqADhACaPTK9YJf", "c": "DSapNir30toMZMTPpBSGmYHBQQ/kyjipFwx9ePrLaloWX+do9llu+ZM4g7RlaSYtoBPCdjKlSQyxtaZbOUMrjXI="}, "b08d5dda0e6e3e14": {"s": "/PcgIdNZZbRJE2R4kmEGPw==", "i": "O2hA1mcETdHUq33V", "c": "zMShB/qounhPRiItYJUvBiIa4VycGhI0tysf+JUj+AgBGASxO5/jcXIRG7bhXqPy+tRPIS715W+2fqjN60TUzv4="}, "5a91665adbf279f0": {"s": "7oETEaxyH1pt0hTcH6uaIQ==", "i": "slz8n6zBqktuMUL0", "c": "bFfZic7OeFrlC+xyIsiqLhWwMjSDvqu6z99r24qD9DddjYr7MThgLYTVtwuxkx7br7uPPt7nwm+zgi1226Vclmw="}, "5a55eff167effacd": {"s": "aT2CAlVwsHEGF6/gbIlB8Q==", "i": "wtMzsgvsxALGnWT0", "c": "5+ay8wYjtJu2I2hSnMIPlwgP8DMSr4/I22LW6FXN5f7rbCGIiMZfFzSSr2xegi1GNo+QrEKzqmWBQb09/ZzgjWM="}, "d48bc6a13001e6eb": {"s": "F78NICInenv4e1cC2DSp/g==", "i": "ZaxhdWPKPdU2iC1d", "c": "VEXSER0X4aHBi8iINa0EXGCf5+aiTaUyDMGtoALf7VCz3fLGkTV2zT/2MjIA52pyu1pw6JHONUxzTuRBbdtisrXYGuepPBxTqE/oGVsmsuICJTjM"}, "491f61ac907afdb7": {"s": "AqJoaVYECve6UNj/pacb7Q==", "i": "cPvOEO2zlt8R7WNG", "c": "kHwI4/aavr0Mg/HlQc6FgkKwgjyxiYP0JcdxnuVeN7AI6DDyYrDKbxscV1FTWjrS5QS7RibKkZatw6L1eL6h/+E="}, "a37154a29586e618": {"s": "aYPa0SBQxok4I8vkNtB6lw==", "i": "6iW7ZHLTgwSJP12+", "c": "n3axT8AD8o6GK7KNpfAQg1xT2ZbaGiy7g6J6BnG3WKu/Qb2ZcvQktlpcZAjfNia9uq1Xg+6Aa25jnZO+JDNjrj4="}, "fa20a4a0d9b0cfd4": {"s": "uPt0Aj/hnDn2WD427kEeIA==", "i": "+rWJa/t7Q+FIR414", "c": "qErEMvXK/twlKfwKwauazWpWq5HAtCSUQmFOCBMVnQnv/yhPhVByEJdZx18mAx8F68mNUjyywWJNF2mworjqOAY="}, "ac00a9068a427223": {"s": "243Vx1z+SJE4aP0P+T5Ltg==", "i": "MI9ui+8mZmleRtxp", "c": "ALcHvaDDbvSf2E8r1TYEdWPeElPo5irG77cazh4Df3u6u/7BrdP6x4VAftjAWZCj9HKIAQdvj8zMEU5qiR2nwFYB6unB/rqI47lCeVX+VS33blWmo28AIMWXP9Egfru5FXQsWTpW2pb/lba3Y3Pq0Rn+agb9GqZw1hl4jSYHdE5y2O3xpUcglle4XziP"}, "5718f94a949dc0b6": {"s": "Ok0ie1hezGgol/T69mQxTQ==", "i": "Ia/LEsyN8FetKRMw", "c": "9WUvdPHIa3JmkhSMzIdhEsLrVAezSXuhSDhpxGYr5996ypNdYjsIsHMHW2ap+Jz7f3OEbQebCt4vOvohRcIyev0="}, "fd21bc2c2647048b": {"s": "hesIrHeACEGIdKKT0tNV1w==", "i": "3e0I3Ft7MAgrQ6Ql", "c": "Rk5cPHNkyg9rIRTu05p1N8aVyBlpPNAwqEh75sLwMBYEQsneeqtl+tN1stwwyCSpfK0ocge6weld7YugCdiGgfN9RvoEk1WV2e9/QXWuwAlMSHJ2n6IkZ9NBuGCfMJFH07iZ2tOoPqFpdqf8cRRGik/qE4wYUzzugEUzk2gpT3IpQzEY6PNvDPFDhsAG"}, "9ea417998649c2e1": {"s": "jBA7wb9NEUMmvYxpwA+oQg==", "i": "LytRu3tqtGUdf4mQ", "c": "YRSejZwHwZbOJEj0RM8hxSpVISwIzKUE6tZ67iHZ8sako5uiVH0SZA1vPb1K7uBu2xcAwr2fagureK1dfuRiXgeVL1GNJNPXBbWKz89Sp376kid2n+yQlVXf6dOexxDHB22cIwOXJOX1bAJh1ha4netVMHyrWSJRr/atk4aFwfxjyALEWl/K4QxVD05jF05BDA7FSGbgjv72E0Xfuahg/kL7j1b/FLcEs2YgZ/6BsL+3GRaBCqRBCOyQy5Evy7d1WW1RCV1Phi2B92sbs1CDdM5/8LBna3e+TAjeg6uyPL/g33FLkmOfCGoluB7QaIXQS8sZN6U0b+VNJYcD7CjjV9JvnEvVGcv3ck9mi92ws01aQXztHqPnKLVfksNp5+aHds6YyJ3gJoJzDnXMNcWCgs5ON9gr3K14gMnAdfQv+ZTLBAqR9UaySWnJtgzymj1wsvia3S6KWYrsl1UppIfWGj+9iPTcnLgtYJ29G8HLfKu9LK2BTCAtccViJDFbpHxtPd/FMsM6GD6Mbko9M7b1nM4phaTBz3BrqQdWvxC4lo8HHmgOVGE24X/HptmCftbv8KVZu1Kj6WTGIqW/Xz3x9aTtZDvN/WFa4nfjFYwxCYFpDHwd13zysVXNSWhIzQ3qqMy4WnHMgUrM+WNQ7ulXtgYcFYqkfo7LvF5aBSWuRmyZGdDKcvlbgAA20pQ1akYi1wHZzDt0gOZhZx3CGF6Rupfx8504vIknFJBlpPVjGP8FAA3oT38d5mjUeDrpFnojKJIiR8vnxrtQ7cXvfAAya2HBNp9aU0h6jYRA5j06vPoLbCAmOtp101USdx8f92cf1cnC231ZY3A2ESMy10CtRT0QqmCoI4Alch/Y04kUJcdf6U9S/mtOfZ4Wg84hZ5lORZIVWf3YBpBPHp8FWGsUX1mXNQ7ZppHMdpjk26Pz2uUwwSkrQRRVnnBPwaKXnxzEj1yQtLiyQxZJd4M0aa6Tlg6Wz5w0oPzPttu+N4GPrd+QnGy5MyEziXZA3lGy9eJGuJTwB/XihNOsWzLNwUv8pC52Wjo8pBovq5ztkEQabs4i1nNpArjWzqTNcb8hhmMOaW5eelUhrWmWow3WHeotOQnMdi/WiRDXsRzJPbBFbNHCXqbPrNpO9P2CjnGz/5gLBVVZ2QMtUh3f4MosRNNXVsl8fM0DViDOe2buY5wy1me73Bs61fkjRpyi2PhMohu7PEmq8rajBw+Xs/Ih75+UoAMKTACS22ZSHEaVm7DNJtvgstrqrKZ7Vv7On87m3uUpYc4k3caT0zdbJ3M0awfVtg469OD2Cil3dNPrIOcO4P8Uzzy80q5ZTwKZ2qNZBot0eX1QcVGYtecJ9pT+Fcg8W/i7hHjkRDY1eIJGReSQ2x11XRaDoD7NlqvLt9jVbo3DUDrOPvyYq88t9Zm5mTzaiYb2qTvdNQ5bW9n5zNWimWzzxBXb"}, "a963eb8b5b30d1aa": {"s": "WrNU8h7OK66DhJDc8FftYg==", "i": "XscZkL/PVoSpFOw2", "c": "CfMHHapF4wQUZUgBwPLwtAgbq3iwVjnPNLNNNQf7u7qWJ6+UXxsWuHQ2s0Gq3u5AFxK6epYR+n8nMZnmCWqT9l86DZw3ITbuZUitthPf2yJIUE3uhseDKnspxFdUvMojVPG2LPQWQkM7L3kHfF5aF2vXWXZNDqqNbuybgmmBfQwFRFLoZStnAJCMkBqJLcjuC155wAD9xTfTCJV1BJbIUSlid7wyXmwxrJhjFrcRCFujoQ8KVq4RcFeRyUlfDmJhF78cVf7pPLWYy+5HCSBvB4t2AgEoyU4yhtHV813eF/5DO6HJlqLBiIFYn+LvyGC+9i675Ka+wgg87H6P8mBBgHCYR1zmayI9+1BHImkAO77ri0fDP/DYsUoiS3In8cdfnAnd+uLmtQf2J1A6lL6Pb6zIluZcQAFAAMp29UwvtPcLOyRtGABUxfZLzsjAg5kqtpURe2WmVt4hD8WcScniGqijd732S965vCxPOLhmu5HNwbbvnC1UJOn+mmJ/AdXFaA4p9HYy5SEso9/qPbxbT2V9lj4LBF/KysE1zLzZCtcl55k578vgc7BWqj3SN2PKi5bAhSn/9Y780hZEKeQOtGzYefstFguEvMiPST2DGDUFWmI/lBGhpIvK4qixKEUYOO3Rn/2l/8H/um5YspT0ca17OyvmGfK1OR5dvwD6EZe9XXxMlco6c/NTi0xaf/MD2ujN7m8DkdEfegBxJW6A+08ILA/Ihy1XDbT2uRtV913aqayPRlngz1N2Z8jNRDNdFnDpZoedR+ZCRJxJPAiDsbx+63oYrQMgEeYpmEtPCL0IiZ8wLDGNG3NfzuPbo0GXbecEYyASH09Q2LMifi3psxjeL5jCKFPxqV8yKD6QnqqLNXl3aSPsAEGRYB/1hrTAZRIJjLSBHRcMatD9jvtDIknIinzH+zS60QeIaBvig4fxwYC08P6BLITKswbtYn9uyhl++evkf7tPbdLU1/8SrhdSo23V4ODyHzMob9xRXY4eIX1+Cit57NHRE1cMrHm6ZYsbM3887zY7Plbevbr3PzuVtHd7wvxXNYNAHHUuHDGC/wufDbPtA1Q8pGOT9nA2UEnnL7qOImZwm/yBVEsae6Hl1rNK831+T48oHFhAe0xlDMO9ebXJDHsOvL5vPxyx6VWz93ZKbS0c8n3sqjxzGvcjYkogLWGPcl1gTBSA2xa5V61YhEy4MDqv8aigIrl5zLdAO0Kq1B2gM1G1DbxWVbDcv45i6wwc++4tAPZX4cGMOc/8e3ET7nalXkCYKvGBOIb8WYd6ONDERZC3I0lNyasvkgrgRzb+dGMbg3zYDcMNkBiRCNLRa39lMHyyBS3/LzGTbUEJqIty1ifnMWto04yX3YYhEQrDVPKO6PA0EOHBE1JyxMmYbM3uHH5FYVK3vl5CPMo2t55lMNK2+wPHKUQ+i8uSqRHHrLJR1TnG+cIl"}};
+let NAMES = {}, ADJ = {}, ME = null, ROLE = null;
+
+const $ = s => document.getElementById(s);
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function hname(n){ const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('hcteam2026|' + n));
+  return [...new Uint8Array(d)].map(x => x.toString(16).padStart(2,'0')).join('').slice(0,16); }
+async function unlock(name, pin){
+  const e = VAULT[await hname(name)]; if(!e) return null;
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(name + '|' + pin), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({name:'PBKDF2', salt:b64(e.s), iterations:PUBLIC.meta.iter, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['decrypt']);
+  try{ const pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:b64(e.i)}, key, b64(e.c)); return JSON.parse(new TextDecoder().decode(pt)); }
+  catch(_){ return null; }
+}
+function rankColor(rank, n){ const t = n > 1 ? (rank-1)/(n-1) : 0; const h = Math.round(130*(1-t)); return { solid:`hsl(${h},68%,40%)`, soft:`hsla(${h},70%,48%,.11)`, bar:`hsl(${h},68%,45%)` }; }
+function nm(id){ if(NAMES[id]) return `<span>${NAMES[id]}</span>` + (ADJ[id] && ADJ[id].chat ? ' <span class="plus" title="채팅조">+</span>' : ''); return '<span class="mask">***</span>'; }
+const cg = r => (ADJ[r.id] && ADJ[r.id].grade) || r.grade;
+const isMe = id => ROLE === 'member' && NAMES[id];
+function gchip(g){ return g ? `<span class="gr ${g}">${g}</span>` : ''; }
+
+function table(rows, cols, maxV){
+  const n = rows.length;
+  let h = '<div class="tscroll"><table><thead><tr><th>순위</th>' + cols.map(c => `<th class="${c.r?'r':''}">${c.h}</th>`).join('') + '</tr></thead><tbody>';
+  rows.forEach(r => {
+    const c = rankColor(r.rank, n);
+    h += `<tr class="${isMe(r.id)?'me':''}" style="background:${c.soft}"><td class="rk" style="border-left:6px solid ${c.solid}"><span class="rkb" style="background:${c.solid}">${r.rank}</span></td>`
+      + cols.map(col => `<td class="${col.r?'r':''} ${col.cls||''}">${col.f(r, c, maxV)}</td>`).join('') + '</tr>';
+  });
+  return h + '</tbody></table></div>';
+}
+const vbar = (v, max, c, txt) => `<div>${txt}</div><div class="bar-in"><i style="width:${Math.max(3, v/max*100)}%;background:${c.bar}"></i></div>`;
+
+function render(){
+  const P = PUBLIC, mxCb = Math.max(...P.cb.map(r=>r.v)), mxC = Math.max(...P.contrib.map(r=>r.v));
+  const mxL = Math.max(...P.lcb.map(r=>r.v)), mxT = Math.max(...P.lteam.map(r=>r.v));
+  const crit = (lines, chips) => `<div class="crit">${lines}${chips?'<div class="chips">'+chips.map(x=>'<span>'+x+'</span>').join('')+'</div>':''}</div>`;
+  let h = '';
+  h += `<div class="panel"><div class="ph"><span class="tag">개인</span><h3>1. 챗봇 사용 안내</h3>`
+     + crit('상담·채팅 인원 대상 · 통화 중 상담사가 바로바로(AI 챗봇) 사용을 안내한 통화 수로 순위', ['상위 ~20% EX','~40% VG','~80% GD','~100% NI'])
+     + `<div class="note">집계: 상담 STT 통화 원문 2026-05-18(STT 수집 시작) ~ 09-30 · 안내 1건 = 안내 발화가 있는 통화 1통</div></div>`
+     + table(P.cb, [{h:'이름', cls:'nm', f:r=>nm(r.id)}, ...(ROLE==='admin'?[{h:'소속', f:r=>r.team}]:[]), {h:'안내 건수', r:1, f:(r,c)=>vbar(r.v, mxCb, c, '<b>'+r.v+'</b>건')}, {h:'등급', r:1, f:r=>gchip(r.grade)}]) + '</div>';
+  h += `<div class="panel"><div class="ph"><span class="tag">개인</span><h3>2. 콜 처리 기여도 (인입 70% + 콜백 30%)</h3>`
+     + crit('기여율 = 인입 점유율×0.7 + 콜백 점유율×0.3 · 2026-01-01 ~ 10-31 · 9월 프로모션 가산(9월분 ×2) 포함',
+            ['G1: EX 5.5 · VG 4.5 · GD 4.0 · NI 4.0 미만', 'G2: EX 6.0 · VG 5.5 · GD 4.5 · NI 4.5 미만', '신입: EX 4 · VG 3 · GD 2 · NI 2 미만'])
+     + `<div class="note">기준 % 이상 충족 시 해당 등급 · 상담원 실적 탭과 동일 데이터(IMS) · 채팅 투입·휴직 인원은 실제 콜 처리 기간만으로 기여율 환산 (같은 기간 전체 대비 점유율)</div></div>`
+     + table(P.contrib, [{h:'이름', cls:'nm', f:r=>nm(r.id)}, {h:'기준', f:r=>r.grp}, {h:'기여율', r:1, f:(r,c)=>vbar(r.v, mxC, c, '<b>'+r.v.toFixed(2)+'%</b> <span class="sub-v">인입 '+r.ic.toFixed(1)+' · 콜백 '+r.tc.toFixed(1)+(ADJ[r.id]&&ADJ[r.id].cut?' · '+(ADJ[r.id].from?ADJ[r.id].from.slice(5).replace("-","/"):'')+'~'+ADJ[r.id].cut.slice(5).replace("-","/")+' 환산':'')+'</span>')}, {h:'등급', r:1, f:r=>gchip(cg(r))}]) + '</div>';
+  h += `<div class="panel"><div class="ph"><span class="tag ld">조장</span><h3>3. 챗봇 사용 안내 (조별 인당)</h3>`
+     + crit('9월 개편 이전 4개조 기준 · 조원 안내 건수 합 ÷ 조원 수', ['1등 EX','2등 VG','3~4등 GD'])
+     + `<div class="note">집계: STT 2026-05-18 ~ 08-31 · 조원 수 = 기간 내 통화 기록이 있는 인원</div></div>`
+     + table(P.lcb, [{h:'조장', cls:'nm', f:r=>nm(r.id)}, {h:'조', f:r=>(ROLE==='admin'||NAMES[r.id])?r.team:'<span class="mask">***</span>'}, {h:'인당 안내', r:1, f:(r,c)=>vbar(r.v, mxL, c, '<b>'+r.v.toFixed(1)+'</b>건 <span class="sub-v">합 '+r.sum+' / '+r.n+'명</span>')}, {h:'등급', r:1, f:r=>gchip(r.grade)}]) + '</div>';
+  h += `<div class="panel"><div class="ph"><span class="tag ld">조장</span><h3>4. 팀별 콜 처리 기여도 (인당)</h3>`
+     + crit('9월 개편 이전 4개조 · 2026-01-01 ~ 08-31 · 조 합산 기여율(인입70+콜백30) ÷ 실효 인원', ['EX 5.0%','VG 4.5%','GD 4.0%','NI 4.0% 미만'])
+     + `<div class="note">실효 인원 = 조원별 근무 개월 비율 합 (퇴사·이동 반영, 상담원 실적 탭과 동일 방식)</div></div>`
+     + table(P.lteam, [{h:'조장', cls:'nm', f:r=>nm(r.id)}, {h:'조', f:r=>(ROLE==='admin'||NAMES[r.id])?r.team:'<span class="mask">***</span>'}, {h:'인당 기여율', r:1, f:(r,c)=>vbar(r.v, mxT, c, '<b>'+r.v.toFixed(2)+'%</b> <span class="sub-v">조 합산 '+r.sum.toFixed(1)+'% / '+r.n+'명</span>')}, {h:'등급', r:1, f:r=>gchip(r.grade)}]) + '</div>';
+  const mxA = Math.max(...P.att.map(r=>r.v));
+  h += `<div class="panel full"><div class="ph"><span class="tag" style="background:#5b6068">근태</span><h3>5. 근태(성실) — 실근무 가동율</h3>`
+     + crit('하루 근무시간(8시간, 반차 4시간) 중 실제로 통화하거나 지원 건을 처리하고 있던 시간의 비율 · 높을수록 근무시간을 꾸준히 업무에 썼다는 뜻')
+     + `<div class="note">기간: ${P.att_period[0]} ~ ${P.att_period[1]} 평일 · 등급 없이 참고 지표 · 채팅 상담 기간은 업무 형태가 달라 제외 · 자세한 계산은 페이지 맨 아래 '산출 방법' 참고</div></div>`
+     + table(P.att, [{h:'이름', cls:'nm', f:r=>nm(r.id)}, {h:'근무일', r:1, f:r=>r.wd+'일'}, {h:'일평균 가동', r:1, f:r=>'<b>'+r.act.toFixed(2)+' h</b>'},
+         {h:'가동율', r:1, f:(r,c)=>vbar(r.v, mxA, c, '<b>'+r.v.toFixed(1)+'%</b>')}, {h:'통화시간/일', r:1, f:r=>r.call.toFixed(2)+' h'},
+         {h:'건수/일', r:1, f:r=>r.rec.toFixed(1)}, {h:'얼리버드', r:1, f:r=>r.early+'일'}, {h:'반차(추정)', r:1, f:r=>r.half+'일'}]) + '</div>';
+  const mxS = Math.max(...P.svc.map(r=>r.v));
+  const tS = P.svc.reduce((a,r)=>({t:a.t+r.total,f:a.f+r.fake,v:a.v+r.v,d:a.d+r.wd}),{t:0,f:0,v:0,d:0});
+  const kp = (v,l,col) => `<div style="flex:1;min-width:130px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff"><div style="font-size:20px;font-weight:900;color:${col}">${v}</div><div style="font-size:12px;color:var(--mute);font-weight:700">${l}</div></div>`;
+  h += `<div class="panel full"><div class="ph"><span class="tag" style="background:#8d939a">참고</span><h3>[참고자료] 실 서비스 처리량</h3>`
+     + crit('지원내역 총 접수 건 중 실제 서비스가 아닌 기록(허수)을 빼고 남은 <b>실 서비스 건수</b> · 순위는 실 서비스 총 건수 기준')
+     + `<div class="note">기간: ${P.att_period[0]} ~ ${P.att_period[1]} 평일 · 허수 = A 콜백·부재 + B 빈 기록 · 채팅 상담 기간 제외 · 판정 예시는 맨 아래 '허수 판정 샘플'</div>`
+     + `<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">${kp(tS.t.toLocaleString(),'총 접수 건','#1e3a8a')}${kp(tS.f.toLocaleString()+' <span style=\"font-size:13px\">('+(tS.f/tS.t*100).toFixed(1)+'%)</span>','허수 (A+B)','#b91c1c')}${kp(tS.v.toLocaleString(),'실 서비스 건','#15803d')}${kp((tS.v/tS.d).toFixed(1),'1인 일평균 실 서비스','#1e3a8a')}</div></div>`
+     + table(P.svc, [{h:'이름', cls:'nm', f:r=>nm(r.id)}, {h:'조', f:r=>(ROLE==='admin'||NAMES[r.id])?r.team:'<span class="mask">***</span>'}, {h:'근무일', r:1, f:r=>r.wd+'일'},
+         {h:'총 접수', r:1, f:r=>r.total.toLocaleString()}, {h:'A<br>콜백·부재', r:1, f:r=>'<span class="sub-v" style="font-size:13px">'+r.A+'</span>'},
+         {h:'B<br>빈 기록', r:1, f:r=>'<span class="sub-v" style="font-size:13px">'+r.B+'</span>'}, {h:'허수 계<br>(A+B)', r:1, f:r=>'<b style="color:'+(r.fpct>=3?'#b91c1c':'#15803d')+'">'+r.fake+'</b> <span class="sub-v">('+r.fpct.toFixed(1)+'%)</span>'},
+         {h:'실 서비스', r:1, f:(r,c)=>vbar(r.v, mxS, c, '<b>'+r.v.toLocaleString()+'</b>')}, {h:'일평균<br>실 서비스', r:1, f:r=>r.pd.toFixed(1)}]) + '</div>';
+  const ex = P.excluded.map(e => nm(e.id) + ' — ' + e.why).join('<br>');
+  if (ex) h += `<div class="panel full"><div class="ph"><h3 style="font-size:14px">순위 제외</h3><div class="crit">${ex}</div></div></div>`;
+  $('kpis').innerHTML = h;
+  renderSummary();
+}
+function renderSummary(){
+  const P = PUBLIC, box = $('summary');
+  if (ROLE !== 'member'){ box.style.display='none'; box.innerHTML=''; return; }
+  const mine = arr => arr.find(r => NAMES[r.id]);
+  const card = (k, v, sub, g, ld) => `<div class="scard ${ld?'ld':''}"><div class="k">${k}</div><div class="v"><div><b>${v}</b><small>${sub}</small></div>${g?`<span class="gr big ${g}">${g}</span>`:''}</div></div>`;
+  let cs = '';
+  const a = mine(P.cb), b = mine(P.contrib), c = mine(P.lcb), d = mine(P.lteam);
+  cs += a ? card('챗봇 사용안내', a.v+'건', a.rank+'위 / '+P.cb.length+'명', a.grade) : card('챗봇 사용안내', '-', '순위 제외', '');
+  cs += b ? card('콜 처리 기여도', b.v.toFixed(2)+'%', b.rank+'위 / '+P.contrib.length+'명' + (ADJ[b.id]&&ADJ[b.id].chat?' · 채팅조 +':'')+(ADJ[b.id]&&ADJ[b.id].leave?' · 근무기간 환산':''), cg(b)) : card('콜 처리 기여도', '-', '순위 제외', '');
+  if (c) cs += card('[조장] 챗봇 사용안내', c.v.toFixed(1)+'건', '인당 · '+c.rank+'위 / 4개조', c.grade, 1);
+  if (d) cs += card('[조장] 팀 콜 처리 기여도', d.v.toFixed(2)+'%', '인당 · '+d.rank+'위 / 4개조', d.grade, 1);
+  const e = mine(P.att), f = mine(P.svc);
+  const rc = (k, v, sub) => `<div class="scard rf"><div class="k"><span class="rtag">참고</span>${k}</div><div class="v"><div><b>${v}</b><small>${sub}</small></div></div></div>`;
+  let rs = '';
+  rs += e ? rc('근태(성실) 실근무 가동율', e.v.toFixed(1)+'%', e.rank+'위 / '+P.att.length+'명 · 일평균 '+e.act.toFixed(2)+'h') : rc('근태(성실) 실근무 가동율', '-', '대상 아님');
+  rs += f ? rc('실 서비스 처리량', f.v.toLocaleString()+'건', f.rank+'위 / '+P.svc.length+'명 · 일평균 '+f.pd.toFixed(1)+'건') : rc('실 서비스 처리량', '-', '대상 아님');
+  box.innerHTML = `<h4>요약<span>${ME} 님의 항목별 실적과 등급</span></h4><div class="scards">${cs}</div>`
+    + `<div class="scards" style="margin-top:12px">${rs}</div>`;
+  box.style.display = 'block';
+}
+
+async function doLogin(){
+  const n = $('inName').value.trim(), p = $('inPin').value.trim();
+  $('msg').textContent = '';
+  if(!n || !/^[0-9A-Za-z]{4,12}$/.test(p)){ $('msg').textContent = '이름과 비밀번호를 입력해 주세요.'; return; }
+  $('btnLogin').textContent = '확인 중…';
+  const r = await unlock(n, p);
+  $('btnLogin').textContent = '조회';
+  if(!r){ $('msg').textContent = '이름 또는 비밀번호가 맞지 않습니다.'; $('inPin').value=''; return; }
+  NAMES = r.names; ADJ = r.adj || {}; ROLE = r.role; ME = n;
+  $('loginForm').style.display='none'; $('whoBox').style.display='flex';
+  $('whoName').textContent = n; $('whoRole').textContent = ROLE==='admin' ? '전체 조회' : '본인 조회';
+  $('locked').style.display='none'; $('kpis').style.display='grid'; render();
+}
+function doLogout(){ $('summary').style.display='none'; $('summary').innerHTML=''; ADJ={}; NAMES={}; ROLE=null; ME=null; $('kpis').innerHTML=''; $('kpis').style.display='none'; $('locked').style.display='block';
+  $('loginForm').style.display='flex'; $('whoBox').style.display='none'; $('inPin').value=''; $('inName').value=''; }
+$('btnLogin').onclick = doLogin; $('btnLogout').onclick = doLogout;
+$('inPin').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+$('foot').innerHTML = '데이터 기준일 ' + PUBLIC.meta.built + ' · 이름은 본인 비밀번호로만 복호화되며 화면을 닫으면 사라집니다.';
+</script>
+</body>
+</html>
